@@ -5,45 +5,111 @@ Componentes:
 	acceder al sistema y ver la información de cualquier sensor. 
 	Implementa una versión reducida del protocolo HTTP estándar.
 
-	-Debe ser capaz de antender peticiones de forma concurrente. El número de conexiones 
-	simultáneas debe ser parametrizable.
+		-Debe ser capaz de antender peticiones de forma concurrente. El número de conexiones 
+		simultáneas debe ser parametrizable.
 	
-	-Debe poder escuchar en un puerto configurable. Cuando arranquemos el servidor MyHTTPServer
-	uno de los argumentos que recibirá es el puerto escucha. El servidor abrirá un socket en 
-	ese puerto y esperará peticiones HTTP que provendrán de un navegador web. 
+		-Debe poder escuchar en un puerto configurable. Cuando arranquemos el servidor MyHTTPServer
+		uno de los argumentos que recibirá es el puerto escucha. El servidor abrirá un socket en 
+		ese puerto y esperará peticiones HTTP que provendrán de un navegador web. 
 
-	-El servidor aceptará peticiones HTTP y devolverá respuestas HTTP. Se tiene que implementar
-	un subconjunto del protocolo HTTP peticiones/respuesta, que conformarán un protocolo 
-	MiniHTTP. En caso de que reciba una petición con algún comando no soportado, debe devolver
-	una respuesta del tipo 'comando no soportado'.
+		-El servidor aceptará peticiones HTTP y devolverá respuestas HTTP. Se tiene que implementar
+		un subconjunto del protocolo HTTP peticiones/respuesta, que conformarán un protocolo 
+		MiniHTTP. En caso de que reciba una petición con algún comando no soportado, debe devolver
+		una respuesta del tipo 'comando no soportado'.
 
-	Peticiones de entrada HTTP:
-	-Línea incial. 
-	ejemplo: ' GET /prueba.html HTTP/1.1 '
+		Peticiones de entrada HTTP:
+			-Línea incial. 
+			ejemplo: ' GET /prueba.html HTTP/1.1 '
 
-	-Cabecera: Directivas que indican aracterísticas adicionales de la petición.
+			-Cabecera: Directivas que indican aracterísticas adicionales de la petición.
 
-	-Cuerpo: Información necesaria en algunos casos para realizar la operación definida en la
-	línea inicial.
+			-Cuerpo: Información necesaria en algunos casos para realizar la operación definida en la
+			línea inicial.
 
-	Respuesta de salida MiniHTTP:
-	-Línea de estado:  HTTPVersión + Código Estado + Descr.Estado + SaltoLínea
-	ejemplo: ' HTTP1.1 200 OK '
-	Los códigos de estado pueden ser consultados: www.w3.org/rfc2616/rfc2616-sec6.html#sec6
+		Respuesta de salida MiniHTTP:
+			-Línea de estado:  HTTPVersión + Código Estado + Descr.Estado + SaltoLínea
+			ejemplo: ' HTTP1.1 200 OK '
+			Los códigos de estado pueden ser consultados: www.w3.org/rfc2616/rfc2616-sec6.html#sec6
+			Utilizaremos la versión HTTP1.1. Cuando el servidor reciba durante una petición algún 
+			método no soportado deberá devolver un código de estado '405' 'Method Not Allowed'.
 
-	-Cabecera: Directivas que indican características adicionales de la respuesta y que pueden
-	influir en el tratamiento de dicha respuesta por parte del navegador. Cada directiva de 
-	cabecera estará separada por un salto de línea. Se debe incluir una línea en blanco antes
-	del cuerpo del mensaje para separarlo.
+			-Cabecera: Directivas que indican características adicionales de la respuesta y que pueden
+			influir en el tratamiento de dicha respuesta por parte del navegador. Cada directiva de 
+			cabecera estará separada por un salto de línea. Se debe incluir una línea en blanco antes
+			del cuerpo del mensaje para separarlo.
+			Sintaxis: 
+				Directiva: valor
+				Directiva: valor
+				...
+				
+			A continuación se describen las cabeceras que se deben incluir en la respuesta HTTP.
+			Connection: Indica el tipo de conexión..
+			Content-Lenght: Longitud del contenido del cuerpo del mensaje. 
+			Content-Type: Indica el tipo de información enviada en el cuerpo del mensaje. 
+			Server: Incluye información sobre el servidor.
+
+			-Cuerpo: Contenido HTML que será mostrado al cliente a través del navegador.
+			Cuerpo del mensaje: Contendrá el código HTML que será mostrado por el navegador mostrando 
+			información de los sensores o la descripción de la operación realizada por el actuador.
+			MyHTTPServer solo devuelve el contenido de los recursos solicitados, es decir que si se 
+			solicita un .txt se devolverá su contenido, si un .html igual y asi para todo. El servidor
+			no formatea, adapta ni transforma ningún contenido, solo sirve los recursos solicitados 
+			o en caso de que no pueda acceder a ellos simplemente devolverá una página de error.
+
 	
-
-	-Cuerpo: Contenido HTML que será mostrado al cliente a través del navegador.
-
 	Controller: Se encarga de comunicarse con todas las componentes Sonda desplegados y acceder
 	a sus métodos bajo demanda del component MyHTTPServer.
+		
+		La aplicación MyHTTPServer mediante el protocolo HTTP estándar únicamente permite el acceso a 
+		recurso estáticos a través de la red. Para acceder a recursos dinámicos, que pueden ser ejecutables,
+		en el lado del servidor es necesaria la introducción de algún elemento que extienda y haga posible
+		la invocación de aplicaciones ejecutables. En nuestro caso lo haremos a través de un elemento controlador
+		denominado controller.
+		
+		La función del controlador es dar acceso a los diferentes módulos funcionales que nos ofrecen los 
+		dispositivos sensores (sensores y acutadores) y que son encapsulados a través de componentes de negocio
+		distribuidos haciendo uso de RMI. 
 
+		El servidor MyHTTPServer detectará el acceso a un recurso dinámico cuando la URL tenga el patrón siguiente
+		' http://IPServer:Port/controladorSD/...  '
+
+		Todas las URLs que contengan este patron deberán invocar a un recurso dinámico del controller. Es decir, URLs
+		invocando recursos estáticos como estas: 
+			http://IPServer:Port/index.html
+			http://IPServer:Port/page1.html
+			http://IPserver:Port/error.html
+		devolverán el recurso estático solicitado (index.html, page1.html, error.html)...
+		Mientrás que cualquier url que contenga tras la IP del servidor y el puerto de escucha la palabra 'controladorSD'
+		deberá invocar a controller.
+		
+		Una vez que el servidor Web detecte este patrón, encapsulará los datos de la petición y se los pasará al controlador
+		haciendo uso de sockets. Un ejemplo de encapsulación de datos podrías consistir en la siguiente tabla, ante una 
+		petición con la siguiente url:
+			http://192.168.1.1:3000/controladorSD/volumen?Sonda=1
+		
 	Sonda: Componente que implementa una sonda de parking capaz de deveolver un valor de uno 
 	de los sensores o modificar el valor del actualizador utilizando RMI. 
 
+Funcionamiento general de MyHTTPServer.
+	Será muy similar a la de un Servidor Web convencional. El servidor recibirá una petición solicitando un 
+	recurso (por ejemplo 'index.html').
+		- O bien un recurso estático, con lo que el servidor comprobará si posee este recurso y lo servirá
+		o en caso de no poseerlo devolverá un mensaje de error del tipo 'recurso no encontrado'.
 
+		- Un recurso dinámico, es decir, acceder a uno de los componentes de la gestión de plazas de 
+		aparcamiento para obtener o establecer un valor, con lo que myHttpserver deberá conectarse con 
+		Controller y hacer la petición adecuada, recibir respuesta y esta respuesta transmitirla al usuario.
+		Para el servidor, el estudiante debe crear un recurso por defeco index.html que en caso de no 
+		especificar ningún recurso (es decir, el usuario introduce 'http://IP:puerto') se utilize como 
+		página por defecto. 
+
+Errores.
+	Los errores que debe detectar y manejar adecuadamente el servidor son los siguientes. Debe devolver un mensaje
+	que indique cada uno de ellos junto con su correspondiente código de error HTTP.
+
+		- Recurso no accesible: Se solicita un recurso estático que no existe, error 404.
+		- No hay conexión con controlador: Si no se ha podido establecer una conexió con el controlador, error 409.
+		- Método no permitido: Si se utiliza otro método que no sea GET, error 405. 
+	Cuando la respuesta sea un contenido correcto, el servidor debe devolver el contenido junto con el código 200 para
+	que cualquier navegador pueda interpretar que el contenido ha si encontrado.
 
