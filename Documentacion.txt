@@ -1,1 +1,49 @@
 PRÁTCIA 2. 
+
+Componentes:
+	MyHTTPServer: Acceso al sistema de información utilizando un simple navegador web. Podrá
+	acceder al sistema y ver la información de cualquier sensor. 
+	Implementa una versión reducida del protocolo HTTP estándar.
+
+	-Debe ser capaz de antender peticiones de forma concurrente. El número de conexiones 
+	simultáneas debe ser parametrizable.
+	
+	-Debe poder escuchar en un puerto configurable. Cuando arranquemos el servidor MyHTTPServer
+	uno de los argumentos que recibirá es el puerto escucha. El servidor abrirá un socket en 
+	ese puerto y esperará peticiones HTTP que provendrán de un navegador web. 
+
+	-El servidor aceptará peticiones HTTP y devolverá respuestas HTTP. Se tiene que implementar
+	un subconjunto del protocolo HTTP peticiones/respuesta, que conformarán un protocolo 
+	MiniHTTP. En caso de que reciba una petición con algún comando no soportado, debe devolver
+	una respuesta del tipo 'comando no soportado'.
+
+	Peticiones de entrada HTTP:
+	-Línea incial. 
+	ejemplo: ' GET /prueba.html HTTP/1.1 '
+
+	-Cabecera: Directivas que indican aracterísticas adicionales de la petición.
+
+	-Cuerpo: Información necesaria en algunos casos para realizar la operación definida en la
+	línea inicial.
+
+	Respuesta de salida MiniHTTP:
+	-Línea de estado:  HTTPVersión + Código Estado + Descr.Estado + SaltoLínea
+	ejemplo: ' HTTP1.1 200 OK '
+	Los códigos de estado pueden ser consultados: www.w3.org/rfc2616/rfc2616-sec6.html#sec6
+
+	-Cabecera: Directivas que indican características adicionales de la respuesta y que pueden
+	influir en el tratamiento de dicha respuesta por parte del navegador. Cada directiva de 
+	cabecera estará separada por un salto de línea. Se debe incluir una línea en blanco antes
+	del cuerpo del mensaje para separarlo.
+	
+
+	-Cuerpo: Contenido HTML que será mostrado al cliente a través del navegador.
+
+	Controller: Se encarga de comunicarse con todas las componentes Sonda desplegados y acceder
+	a sus métodos bajo demanda del component MyHTTPServer.
+
+	Sonda: Componente que implementa una sonda de parking capaz de deveolver un valor de uno 
+	de los sensores o modificar el valor del actualizador utilizando RMI. 
+
+
+
