@@ -1,7 +1,8 @@
 import java.io.*;
 import java.rmi.*;
 
-public class clienteRMI {
+public class clienteRMI 
+{
     
 
     /** Creates a new instance of cliente_rmi */
@@ -78,7 +79,7 @@ public class clienteRMI {
             }
             catch(Exception ex)
             {
-                System.out.println("Error al instanciar el objeto remoto "+ex);
+                System.out.println("Error al instanciar el objeto remoto " + ex);
                 System.exit(0);
             }
             while (salir == 0)
@@ -157,26 +158,30 @@ public class clienteRMI {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-	String host;
-        String port;
-        clienteRMI cr = new clienteRMI();
-	int i = 0;
-	if (args.length < 2) {
-        try
+		String host;
+		String port;
+		clienteRMI cr = new clienteRMI();
+		int i = 0;
+
+		if (args.length < 2) 
 		{
-	        System.out.println("Debe indicar la direccion del servidor");
+	        try
+			{
+		        System.out.println("Debe indicar la direccion del servidor");
+			}
+	        catch(Exception e)
+			{
+	        	System.out.println("Error: "+e);
+			}
+			return;
 		}
-        catch(Exception e)
+
+		host = args[0];
+		port = args[1];
+
+		while(i==0)
 		{
-        	System.out.println("Error: "+e);
+			cr.menu(host,port);
 		}
-		return;
-	}
-	host = args[0];
-        port = args[1];
-	while(i==0)
-	{
-		cr.menu(host,port);
-	}
     }
 }
