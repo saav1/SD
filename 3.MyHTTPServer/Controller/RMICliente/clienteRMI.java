@@ -7,7 +7,7 @@ public class clienteRMI
 	/*Crear nueva instancia del cliente_rmi*/
 	public clienteRMI(){}
 
-	private int pedirValores(int op, int resultado, InterfazSensores objetoRemoto)
+	private String pedirValores(int op, String resultado, InterfazSensores objetoRemoto)
 	{
 
 
@@ -15,19 +15,27 @@ public class clienteRMI
 		BufferedReader buf = new BufferedReader(ent);
 
 		try{
-		
-			if(op == 1)
-			{	
-				resultado = objetoRemoto.getVolumen();
+			switch(op){
+				case 1:
+					resultado = String.valueOf(objetoRemoto.getVolumen());
+					break;
+				case 2:
+					resultado = String.valueOf(objetoRemoto.getFecha());
+					break;
+				case 3:
+					resultado = String.valueOf(objetoRemoto.getLed());
+					break;
+				case 4:
+					objetoRemoto.setLed(1);
+					resultado = "LED encendida.";
+					break;
+				case 5:
+					objetoRemoto.setLed(0);
+					resultado = "LED apagada.";
+					break;
+				default: break;		
 			}
-			else if(op == 2)
-			{
-				resultado = objetoRemoto.getFecha();	
-			}
-			else if(op == 3)
-			{
-				resultado = objetoRemoto.getLed();	
-			}
+			
 
 		}
 		catch(Exception exc)
@@ -42,7 +50,7 @@ public class clienteRMI
 	{
 		int op;
 		int salir = 0;
-		int resultado = 0;
+		String resultado = "";
 		char respuesta = 'x';
 
 		InterfazSensores objetoRemoto = null;
@@ -66,11 +74,13 @@ public class clienteRMI
 		{
 			op = 0;
 
-			while(op != 1 && op != 2)
+			while(op != 1 && op != 2 && op != 3 && op != 4 && op != 5)
 			{
 				System.out.println("[1] GET VOLUMEN");
 				System.out.println("[2] GET FECHA");
-				System.out.println("[1] GET LED");
+				System.out.println("[3] GET LED");
+				System.out.println("[4] SET LED >> ON");
+				System.out.println("[5] SET LED >> OFF");
 
 				try
 				{
