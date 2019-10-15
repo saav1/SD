@@ -1,0 +1,4 @@
+#!/bin/bash 
+
+echo "Realizo el registro del objeto remoto..."
+rmiregistry -J-Djava.security.policy=registrar.policy

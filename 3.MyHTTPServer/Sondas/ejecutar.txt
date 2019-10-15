@@ -22,6 +22,7 @@ echo "A continuación abrimos otra consola y nos situamos en el directorio donde
 java -Djava.security.policy=registrar.policy Registro
 
 echo "Ahora ejecuto el cliente"
-javac 
+javac clienteRMI
+java -Djava.security.policy=registrar.policy clienteRMI localhost 1099
 
 

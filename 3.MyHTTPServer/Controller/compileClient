@@ -1,0 +1,10 @@
+#!/bin/bash
+
+echo Compilando el Cliente...
+
+echo 	1.Configurando variable de entorno CLASSPATH.
+export CLASSPATH=$CLASSPATH:/home/saav1/Escritorio/SD/3.MyHTTPServer/Sondas/cliente.jar
+
+javac clienteRMI.java
+
+java -Djava.security.policy=registrar.policy clienteRMI localhost 1039

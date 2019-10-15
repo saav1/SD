@@ -62,7 +62,7 @@ public class clienteRMI
 		try
 		{
 			System.setSecurityManager(new RMISecurityManager());
-			objetoRemoto = (InterfazSensores) Naming.lookup(servidor);
+			//objetoRemoto = (InterfazSensores) Naming.lookup(servidor);
 		}
 		catch(Exception ex)
 		{
