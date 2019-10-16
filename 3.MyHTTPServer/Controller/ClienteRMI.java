@@ -1,13 +1,13 @@
 import java.rmi.*;
 import java.io.*;
 
-public class clienteRMI
+public class ClienteRMI
 {
 
 	/*Crear nueva instancia del cliente_rmi*/
-	public clienteRMI(){}
+	public ClienteRMI(){}
 
-	private String pedirValores(int op, String resultado, InterfazSensores objetoRemoto)
+	public String pedirValores(int op, String resultado, InterfazSensores objetoRemoto)
 	{
 
 
@@ -15,6 +15,7 @@ public class clienteRMI
 		BufferedReader buf = new BufferedReader(ent);
 
 		try{
+			
 			switch(op){
 				case 1:
 					resultado = String.valueOf(objetoRemoto.getVolumen());
@@ -40,13 +41,13 @@ public class clienteRMI
 		}
 		catch(Exception exc)
 		{
-			System.out.println("Error al realizar la operación " + exc);	
+			System.out.println("[PEDIR VALORES] Error al realizar la operación " + exc);	
 		}
 	
 		return resultado;
 	}
 
-	private void pedirOperacion(String host, String port)
+	public void pedirOperacion(String host, String port)
 	{
 		int op;
 		int salir = 0;
@@ -62,7 +63,7 @@ public class clienteRMI
 		try
 		{
 			System.setSecurityManager(new RMISecurityManager());
-			//objetoRemoto = (InterfazSensores) Naming.lookup(servidor);
+			objetoRemoto = (InterfazSensores) Naming.lookup(servidor);
 		}
 		catch(Exception ex)
 		{
@@ -121,7 +122,7 @@ public class clienteRMI
 	}
 
 
-	private void menu(String host, String port)
+	public void menu(String host, String port)
 	{
 		int opc = 0;
 		InputStreamReader ent = new InputStreamReader(System.in);
@@ -129,6 +130,8 @@ public class clienteRMI
 
 		while(opc != 1 && opc != 2)
 		{
+			System.out.println("...................................");
+			System.out.println(".............CLIENTE...............");
 			System.out.println("[1] Realizar operación.");
 			System.out.println("[2] Salir.");
 			System.out.println("Indique la opción a realizar: ");
@@ -157,19 +160,19 @@ public class clienteRMI
 
 
 
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{
 
 		String host;
 		String port;
 
-		clienteRMI cr = new clienteRMI();
+		ClienteRMI cr = new ClienteRMI();
 
 		int i = 0;
 
+		System.out.println("[CLIENTE]");
 		if(args.length < 2)
 		{
-			
 			try
 			{
 				System.out.println("Debe indicar la dirección del servidor");
@@ -189,5 +192,5 @@ public class clienteRMI
 		{
 			cr.menu(host, port);
 		}
-	}
+	}*/
 }

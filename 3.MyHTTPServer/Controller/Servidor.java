@@ -1,6 +1,7 @@
 import java.rmi.*;
 import java.io.*;
 import java.net.*;
+import java.lang.String;
 
 public class Servidor{
 
@@ -57,7 +58,7 @@ public class Servidor{
 	public int realizarOperacion(String cadena){
 		
 		int res = 0;
-		String[] operacion = cadena.split[","];
+		String[] operacion = cadena.split(",");
 
 		System.out.println("SRV: La operación es: " + operacion[0]);
 
@@ -65,7 +66,7 @@ public class Servidor{
 		{
 			System.out.println("SRV: El operando 1 es " + operacion[1] + "y el operando 2 es " + operacion[2]);
 
-			if(operacion[0].compareTo("suma") = 0){
+			if(operacion[0].compareTo("suma") == 0){
 				res = sumar(Integer.parseInt(operacion[1]), Integer.parseInt(operacion[2]));
 			}
 			else
@@ -81,11 +82,12 @@ public class Servidor{
 		{
 			res = -1;
 		}
+		return res;
 	}
 
 
 	/*MAIN*/
-	public static void main(String[] args){
+	/*public static void main(String[] args){
 		
 		//Descripción de socket servidor y de socket con el cliente.
 		int resultado = 0;
@@ -126,7 +128,7 @@ public class Servidor{
 					//Se escribe en pantalla la información que se ha recibido del cliente.
 					//Se realiza las operaciones según la Cadena leida y se devuelve el resultado.
 					//Socket Cliente.
-					resultado = sr.realizaOperacion(Cadena);
+					resultado = sr.realizarOperacion(Cadena);
 					Cadena = Integer.toString(resultado);
 					sr.escribeSocket(skCliente, Cadena);
 					
@@ -142,11 +144,7 @@ public class Servidor{
 		}
 
 
-	}
-
-	
-
-
+	}*/
 
 }
 
