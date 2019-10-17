@@ -128,6 +128,7 @@ public class Sensor extends UnicastRemoteObject implements SensorServices {
                 System.out.println("Binding " + sensor.getRMIName() + " through " + args[0] + ":" + args[1]);
                 registerServices = (RegisterServices) registry.lookup(Register.RMI_NAME);
                 registerServices.registerSensor(sensor);
+                
                 System.out.print("Press ENTER to disconnect ");
                 new BufferedReader(new InputStreamReader(System.in)).readLine();
                 System.out.println("Unregistering...");
