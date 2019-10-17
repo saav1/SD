@@ -27,20 +27,19 @@ public class Client {
 	
 	private void clientMenu(String sensor, Registry registry) {
 		
-		
 		String op = "n";
 		System.out.println("............MENU............");
 		System.out.println("Elige el sensor");
 		System.out.println("[1]. Get Volumen");
 		System.out.println("[2]. Get Fecha");
 		System.out.println("[3]. Get Led");
-		
-		
+		System.out.println(".............................");
 		
 		try
 		{
 			RemoteInterface stub = (RemoteInterface)registry.lookup(sensor);	
 			String response = String.valueOf(stub.getVolumen());
+			System.out.println("Response: " + response);
 		}
 		catch(Exception e) {
 			System.out.println("Error al recibir respuesta : " + e.toString());
@@ -48,10 +47,12 @@ public class Client {
 		}
 		
 
-
-		
-
 	}
 
+	public static void main(String[] args) {
+		
+		Client c = new Client();
+		c.requestServices(args[0], args[1]);
+	}
 
 }

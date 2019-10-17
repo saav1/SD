@@ -19,7 +19,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * Created by pavel on 21/10/16.
+ * Created by STALYN ALEJANDRO ALCOCER VALENCIA on 21/10/16.
  * Sensor's implementation
  */
 public class Sensor extends UnicastRemoteObject implements SensorServices {
