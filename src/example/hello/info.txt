@@ -1,0 +1,54 @@
+Compile the source files.
+	
+	1. The source files for this example can be compiled as follows:
+	
+		javac -d destDir RemoteInterface.java Server.java Client.java
+	
+	(destDir: is the destination directory tu put the class files in)
+	
+	2. Start the JavaRMI Registry, Server, and Client.
+	
+		2.1 Start the JavaRMI Registry.
+			
+			Run the rmiregistry command on the server's host. This command produces no output(when successfull) and is 
+			typically run in the background. By default the registry runs on TCP port 1099. To start a registry on a 
+			different port, specify the port number from the command line. 
+				
+				1) rmiregistry &
+				2) rmiregistry 2001
+				
+			If the registry will be running on a port other than 1099, you'll need to specify the port number in the calls
+			to 'LocateRegistry.getRegistry()' in the server and Client classes. 
+			
+				Registry registry = LocateRegistry.getRegistry(2001);
+				
+	3. Start the server.
+		
+		Run the Server class using the java commands.
+		
+			java -classpath classDir -Djava.rmi.server.codebase=file:classDir/ example.hello.Server &
+			
+			Setting the java.rmi.server.codebase systems property ensures that the registry can load the remote interface
+			definition (note that the trailing slash is important).
+			
+			(classDir is the root directory of the class file tree.)
+	
+			The server remains running until the process is terminated by the user..
+	
+	
+	4. Run the client.
+	
+		Client can be run:
+		
+			java -classpath classDir example.hello.Client
+	
+	
+	
+	
+	https://www.youtube.com/watch?v=NxhmhBQE1q4
+	
+	
+	
+	
+	
+				
