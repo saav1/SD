@@ -1,0 +1,7 @@
+1. Ir al directorio de ../Sensor 
+
+	javac RemoteInterface.java Server.java Client.java
+	
+2. JavaRMI
+
+	rmiregystry &

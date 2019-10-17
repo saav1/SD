@@ -18,6 +18,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
 /**
  * Created by STALYN ALEJANDRO ALCOCER VALENCIA on 21/10/16.
  * Sensor's implementation

@@ -10,16 +10,22 @@ import java.io.*;
 
 public class Sensor implements RemoteInterface{
 	
-	private String nombre;
+	/*PARA EVITAR PROBLEMAS*/
+	
+	private static Registry registry;
+	private final String nombre;
+	
+	
 	public String ultimaFecha;
 	public int volumen, led;
 	
 	
 	Sensor(String file)
 	{
+		
+		this.nombre = file.substring(0, file.lastIndexOf('.'));
 		try
 		{
-			this.nombre = file.substring(0, file.lastIndexOf('.'));
 			readSensor(file);
 			registrySensor();
 		}
@@ -31,6 +37,9 @@ public class Sensor implements RemoteInterface{
 		
 		
 	}
+	
+	@Override
+	public String getNombre() throws RemoteException { return this.nombre; }
 	
 	@Override
 	public int getVolumen() throws RemoteException { return volumen; }
@@ -90,7 +99,9 @@ public class Sensor implements RemoteInterface{
 		try
 		{
 			RemoteInterface stub = (RemoteInterface) UnicastRemoteObject.exportObject(this, 0);
-			Registry registry = LocateRegistry.getRegistry();
+			
+			registry = LocateRegistry.getRegistry();
+
 			registry.bind(this.nombre, stub);
 			
 			System.err.println(this.nombre + " listo...");

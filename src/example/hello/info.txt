@@ -4,7 +4,7 @@ Compile the source files.
 	
 		javac -d destDir RemoteInterface.java Server.java Client.java
 	
-	(destDir: is the destination directory tu put the class files in)
+	(destDir: is the destination directory to put the class files in)
 	
 	2. Start the JavaRMI Registry, Server, and Client.
 	
