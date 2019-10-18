@@ -1,10 +1,44 @@
+
 package example.hello;
 
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-/*
+
+public class Server implements Hello {
+
+    public Server() {}
+
+    public String sayHello() {
+        return "Hello, world!";
+    }
+
+    public static void main(String args[]) {
+
+        try {
+            Server obj = new Server();
+            Hello stub = (Hello) UnicastRemoteObject.exportObject(obj, 0);
+
+            // Bind the remote object's stub in the registry
+            Registry registry = LocateRegistry.getRegistry();
+            registry.bind("Hello", stub);
+
+            System.err.println("Server ready");
+        } catch (Exception e) {
+            System.err.println("Server exception: " + e.toString());
+            //e.printStackTrace();
+        }
+    }
+}
+
+/*package example.hello;
+
+import java.rmi.registry.Registry;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.RemoteException;
+import java.rmi.server.UnicastRemoteObject;
+
  * A server class, int this context, is the class which has a main method that creates 
  * an instance of the remote object implementation, exports the remote object, and then 
  * binds that instance to a name in a JavaRMI regsitry. 
@@ -23,7 +57,7 @@ import java.rmi.server.UnicastRemoteObject;
  * 
  * Note: A class can define methods not specified in the remote interface, but those methods can only be invoked within 
  * machine running and cannot be invoked remotely. 
- * */
+ * 
 
 public class Server implements RemoteInterface{
 	
@@ -37,7 +71,7 @@ public class Server implements RemoteInterface{
 		// TODO Auto-generated method stub
 		try
 		{
-			/*
+			
 			 * The server needs to create the remote object that provides the service.
 			 * Additionally, the remote object must be exported to the JavaRMI runtime so 
 			 * that it may receive incoming remote calls.
@@ -46,11 +80,11 @@ public class Server implements RemoteInterface{
 			 * incoming remote method invocations on an anonymous TCP port and returns the stub for the 
 			 * remote object to pass to clients. As a result of object's class and contains the host name
 			 * and port over which the remote object can be contacted.
-			 * */
+			 * 
 			Server obj = new Server();
 			RemoteInterface stub = (RemoteInterface) UnicastRemoteObject.exportObject(obj, 0);
 			
-			/*
+			
 			 * REGISTER THE REMOTE OBJECT WITH A Java RMI registry.
 			 * 
 			 * For a caller(client, peer, o applet) to be able to invoke a method on a remote object, that caller must
@@ -77,7 +111,7 @@ public class Server implements RemoteInterface{
 			 * check to see if a registry is actually running. If no registry is running on TCP port 1099 of the local host when the 
 			 * bind method is invoked, the server will fail with a RemoteException.
 			 * 
-			 * */
+			 * 
 			
 			
 			//Bind the remote object's stub in the registry.
@@ -96,4 +130,4 @@ public class Server implements RemoteInterface{
 		}
 	}
 
-}
+}*/

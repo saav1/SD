@@ -9,6 +9,7 @@ import java.rmi.RemoteException;
  * Interfaz para la clase registradora de sensores
  */
 public interface RegisterServices extends RMIServices {
+	
     void registerSensor(SensorServices sensor) throws RemoteException;
     void unregisterSensor(SensorServices sensor) throws RemoteException;
 }

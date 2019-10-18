@@ -1,18 +1,25 @@
 package Sensor;
 
+import Sensor.RemoteInterface;
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
+import java.rmi.Naming;
+import java.rmi.RMISecurityManager;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import java.io.*;
 
 
-public class Sensor implements RemoteInterface{
+public class Sensor extends UnicastRemoteObject implements RemoteInterface, Serializable {
 	
 	/*PARA EVITAR PROBLEMAS*/
-	
+	private static RegistroInterface registroInterface;
 	private static Registry registry;
+	//private static Sensor sensor;
+	
 	private final String nombre;
 	
 	
@@ -20,14 +27,13 @@ public class Sensor implements RemoteInterface{
 	public int volumen, led;
 	
 	
-	Sensor(String file)
+	Sensor(String file) throws RemoteException
 	{
 		
 		this.nombre = file.substring(0, file.lastIndexOf('.'));
 		try
 		{
 			readSensor(file);
-			registrySensor();
 		}
 		catch(Exception e)
 		{
@@ -94,25 +100,7 @@ public class Sensor implements RemoteInterface{
 		return 0; //OK.
 	}
 	
-	private int registrySensor() 
-	{
-		try
-		{
-			RemoteInterface stub = (RemoteInterface) UnicastRemoteObject.exportObject(this, 0);
-			
-			registry = LocateRegistry.getRegistry();
 
-			registry.bind(this.nombre, stub);
-			
-			System.err.println(this.nombre + " listo...");
-		}
-		catch(Exception e) 
-		{
-			System.err.println("Error registrar " + this.nombre + " : " + e.toString());
-		}
-		
-		return 0;//OK
-	}
 	
 
 	@Override
@@ -121,9 +109,63 @@ public class Sensor implements RemoteInterface{
 				+ "]";
 	}
 	
-	public static void main(String[] args) {
-		Sensor s = new Sensor(args[0]);
-		System.out.println(s.toString());
+	public static void main(String[] args) throws Exception{
+		
+		if(args.length >= 3) 
+		{
+			registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
+			
+			System.out.println("[0]");
+			
+			Sensor sensor = new Sensor(args[2]);
+			
+			System.out.println("[1]");
+			
+			registroInterface = (RegistroInterface) registry.lookup(Registrador.rmiName);
+			
+			System.out.println("[2]");
+			
+			registroInterface.registrarSensor((RemoteInterface)sensor);
+			
+			System.out.println("[3]");
+		}
+		else
+		{
+			System.out.println("Wrong args: <IP> <PORT> <FILENAME>");
+		}
+	
 	}
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

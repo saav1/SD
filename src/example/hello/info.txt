@@ -45,9 +45,19 @@ Compile the source files.
 	
 	
 	
-	https://www.youtube.com/watch?v=NxhmhBQE1q4
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.rmi.server.codebase=file:home/Escritorio/saav1/SD/controlParking/src Sensor.Sensor Sensor1.txt 
 	
 	
+	para el rmi
+	rmiregistry 1099 -J-Djava.rmi.server.codebaseonly=false &
+	
+	
+	
+	para el registro
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.rmi.server.hostname=127.20.42.159 Sensor.Registrador 127.20.42.159 1099 Sensor1.txt 
+	
+	para el sensor
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.rmi.server.hostname=127.20.42.159 Sensor.Sensor 127.20.42.159 1099 Sensor/Sensor1.txt 
 	
 	
 	
