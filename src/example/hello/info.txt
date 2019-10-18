@@ -50,14 +50,17 @@ Compile the source files.
 	
 	para el rmi
 	rmiregistry 1099 -J-Djava.rmi.server.codebaseonly=false &
-	
+	rmiregistry 1025 -J-Djava.scurity.policy=/Sensor/registrar.policy
 	
 	
 	para el registro
-	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.rmi.server.hostname=127.20.42.159 Sensor.Registrador 127.20.42.159 1099 Sensor1.txt 
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.rmi.server.hostname=127.20.42.159 Sensor.Registrador 127.20.42.159 1099 
+	java -classpath /home/saav1/Escritorio/SD/controlParking/sr-Djava.security.policy=/Sensor/registrar.policy Sensor.Registrador 172.20.42.157 1025
 	
 	para el sensor
 	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.rmi.server.hostname=127.20.42.159 Sensor.Sensor 127.20.42.159 1099 Sensor/Sensor1.txt 
+	java -classpath /home/saav1/Escritorio/SD/controlParking/src -Djava.security.policy=/Sensor/registrar.policy Sensor.Sensor 172.20.42.157 1025 Sensor/Sensor1.txt
+	
 	
 	
 	
