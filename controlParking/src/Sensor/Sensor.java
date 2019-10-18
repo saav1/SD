@@ -15,10 +15,8 @@ import java.io.*;
 
 public class Sensor extends UnicastRemoteObject implements RemoteInterface, Serializable {
 	
-	/*PARA EVITAR PROBLEMAS*/
 	private static RegistroInterface registroInterface;
 	private static Registry registry;
-	//private static Sensor sensor;
 	
 	private final String nombre;
 	
@@ -114,24 +112,15 @@ public class Sensor extends UnicastRemoteObject implements RemoteInterface, Seri
 		if(args.length >= 3) 
 		{
 			registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
-			
-			System.out.println("[0]");
-			
 			Sensor sensor = new Sensor(args[2]);
-			
-			System.out.println("[1]");
-			
-			registroInterface = (RegistroInterface) registry.lookup(Registrador.rmiName);
-			
-			System.out.println("[2]");
-			
+			registroInterface = (RegistroInterface) registry.lookup(Registrador.NOMBRE);
 			registroInterface.registrarSensor((RemoteInterface)sensor);
 			
-			System.out.println("[3]");
+			System.out.println(">> " + sensor.getNombre() + " registrado.");
 		}
 		else
 		{
-			System.out.println("Wrong args: <IP> <PORT> <FILENAME>");
+			System.out.println("ERROR ARGUMENTOS: <IP> <PORT> <FILENAME>");
 		}
 	
 	}

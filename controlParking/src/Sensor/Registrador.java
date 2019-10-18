@@ -8,9 +8,10 @@ import java.rmi.server.UnicastRemoteObject;
 
 public class Registrador extends UnicastRemoteObject implements RegistroInterface{
 
-	public static final String rmiName = Registrador.class.getSimpleName();
-	
+	public static final String NOMBRE = "Registro";
 	private final Registry registro;
+	
+	
 	
 	Registrador(Registry registro)throws RemoteException{
 		super();
@@ -51,20 +52,11 @@ public class Registrador extends UnicastRemoteObject implements RegistroInterfac
 		if(args.length >= 2) {
 			
 			Registry registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
-			
-			System.out.println("[Registrador - 1]");
-
-			
 			Registrador master = new Registrador(registry);
-			
-			System.out.println("[Registrador - 2]");
-			
-            registry.rebind(Registrador.rmiName, master);
-
-			System.out.println("[Registrador - 3]");
-			
+            registry.rebind(Registrador.NOMBRE, master);	
+            
+            System.out.println("REGISTRO NOMBRE: " + Registrador.NOMBRE);
 			System.out.println("REGISTRADOR OK -> " + args[0] + " : " + args[1]);
-			
 			
 		}else {
 			
