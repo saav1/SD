@@ -1,0 +1,12 @@
+{
+    "MAX_SERVER_CONNECTIONS" : 2
+    "SERVER_PORT" : 1025
+    "CONTROLLER_IP" : "172.20.42.253"
+    "CONTROLLER_PORT" : 1026
+    "REGISTRY_IP" : "172.20.42.9"
+    "REGISTRY_PORT" : 1026
+    "DYNAMIC_CONTENT_KEYWORD" : "controladorSD"
+    "DEFAULT_INDEX:PAGE" : "index.html"
+    "SENSOR_KEYWORD" : "sensor"
+    
+}
