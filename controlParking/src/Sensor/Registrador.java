@@ -6,7 +6,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Registrador extends UnicastRemoteObject implements RegistroInterface{
+public class Registrador extends UnicastRemoteObject{
 
 	public static final String NOMBRE = "Registro";
 	private final Registry registro;
@@ -27,13 +27,13 @@ public class Registrador extends UnicastRemoteObject implements RegistroInterfac
 		}
 		catch(RemoteException e)
 		{
-			System.out.println("ERROR REGISTRANDO SENSOR: " + e.toString());
+			System.out.println("ERROR REGISTRANDO SENSOR: " + e.getMessage());
 			throw e;
 		}
 	}
 	
 	
-	public void desregistrandoSensor(RemoteInterface sensor) throws RemoteException{
+	public void desregistrardoSensor(RemoteInterface sensor) throws RemoteException{
 		try
 		{
 			registro.unbind(sensor.getNombre());
@@ -41,7 +41,7 @@ public class Registrador extends UnicastRemoteObject implements RegistroInterfac
 		}
 		catch(NotBoundException e)
 		{
-			System.out.println("ERROR AL DESREGISTRAR  SENSOR: " + e.toString());
+			System.out.println("ERROR AL DESREGISTRAR  SENSOR: " + e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -65,35 +65,6 @@ public class Registrador extends UnicastRemoteObject implements RegistroInterfac
 		
 	}
 
-	@Override
-	public String getNombre() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public String getFecha() throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getVolumen() throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getLed() throws RemoteException {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public void setLed(int led) throws RemoteException {
-		// TODO Auto-generated method stub
-		
-	}
 
 }
 

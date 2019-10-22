@@ -15,9 +15,8 @@ import java.io.*;
 
 public class Sensor extends UnicastRemoteObject implements RemoteInterface, Serializable {
 	
-	private static RegistroInterface registroInterface;
+	private static Registrador registroInterface;
 	private static Registry registry;
-	
 	private final String nombre;
 	
 	
@@ -38,8 +37,6 @@ public class Sensor extends UnicastRemoteObject implements RemoteInterface, Seri
 			System.err.println("Error leer " + this.nombre + " : " + e.toString());
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	@Override
@@ -94,12 +91,8 @@ public class Sensor extends UnicastRemoteObject implements RemoteInterface, Seri
 			e.printStackTrace();
 			return -1; //NOT OK.
 		}	
-		
 		return 0; //OK.
 	}
-	
-
-	
 
 	@Override
 	public String toString() {
@@ -112,9 +105,10 @@ public class Sensor extends UnicastRemoteObject implements RemoteInterface, Seri
 		if(args.length >= 3) 
 		{
 			registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
+			
 			Sensor sensor = new Sensor(args[2]);
-			registroInterface = (RegistroInterface) registry.lookup(Registrador.NOMBRE);
-			registroInterface.registrarSensor((RemoteInterface)sensor);
+			registroInterface = (Registrador) registry.lookup(Registrador.NOMBRE);
+			registroInterface.registrarSensor(sensor);
 			
 			System.out.println(">> " + sensor.getNombre() + " registrado.");
 		}
@@ -126,29 +120,6 @@ public class Sensor extends UnicastRemoteObject implements RemoteInterface, Seri
 	}
 	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
