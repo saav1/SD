@@ -13,17 +13,15 @@ import java.net.Socket;
 import java.util.Date;
 import java.util.StringTokenizer;
 
-// The tutorial can be found just here on the SSaurel's Blog : 
-// https://www.ssaurel.com/blog/create-a-simple-http-web-server-in-java
-// Each Client Connection will be managed in a dedicated Thread
+
 public class JavaHTTPServer implements Runnable{ 
 	
 	static final File WEB_ROOT = new File(".");
-	static final String DEFAULT_FILE = "index.html";
-	static final String FILE_NOT_FOUND = "404.html";
-	static final String METHOD_NOT_SUPPORTED = "not_supported.html";
+	static final String DEFAULT_FILE = "src/index.html";
+	static final String FILE_NOT_FOUND = "src/404.html";
+	static final String METHOD_NOT_SUPPORTED = "src/not_supported.html";
 	// port to listen connection
-	static final int PORT = 7081;
+	static final int PORT = 7085;
 	
 	// verbose mode
 	static final boolean verbose = true;
@@ -82,9 +80,9 @@ public class JavaHTTPServer implements Runnable{
 			StringTokenizer parse = new StringTokenizer(input);
 			String method = parse.nextToken().toUpperCase(); // we get the HTTP method of the client
 			// we get file requested
-			//fileRequested = parse.nextToken().toLowerCase();
+			fileRequested = parse.nextToken().toLowerCase();
 			
-			fileRequested = "src/index.html";
+			//fileRequested = "src/index.html";
 			
 			System.out.println("..................................................");
 			System.out.println("FILEREQUESTED : " + fileRequested);
