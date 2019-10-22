@@ -16,6 +16,7 @@ public class ControllerThread extends Thread{
 	private final Socket requestSocket;
 	private Registry registry;
 	
+	
 	ControllerThread( Socket requestSocket){
 		this.requestSocket = requestSocket;
 	}
@@ -143,20 +144,7 @@ public class ControllerThread extends Thread{
         }
     }	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	
 }

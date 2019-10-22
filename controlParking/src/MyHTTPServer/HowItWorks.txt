@@ -1,0 +1,69 @@
+Create a simple HTTPWeb Server in Java.
+
+	1. Create the constants for the Web Server (index file, port, 404 file not found page, ..) and the Thread which will be
+	used to manage each client connection separately.
+
+	2. In the second part of this tutorial, we read the data senty by the client and we write the request file on the output
+	stream. Finally, we try our HTTP Web Server by making some request by using Safari.
+
+How our Java HTTP Server works.
+
+	Each client connection is managed in a dedicated thread. So, our javaHTTPServer class implements the Runnable interface.
+	In the constants, we define the Web Root, the default file, the file used when a file will be not found, the file called
+	for an unsupported HTTP method and also the port to listen connections.
+
+	The client connections will be managed via the Socket object available in standard in the JDK. In the main method, we 
+	start by creating a ServerSocket object also available in standard in the JDK.
+
+	We listen on the port 8080 until users halts server execution. We call the accpet mehtod of the ServerSocket instance to 
+	wait for a connection. When a connection is created, we pass the Socket object in parameter of our JavaHTTPServer class
+	and then we start a dedicated Thread object.
+	
+	For each Thread instance created, we read characters from the client via the getInputStream method of the Socket insntace got.
+	Then, we get one character output stream to client for headers. And we get a binary output stream to client for request data.
+	
+	We support only GET and HEAD HTTP methods. Otherwise, we return the file pointed by the unsupported variable. If it's GET or
+	HEAD HTTP method, we try to find the request data. If it exists, we return the request data to the user. When we return the 
+	request data, we send also the HTTP Headers. Don't forget to return blank line between headers and content. It's very important!
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

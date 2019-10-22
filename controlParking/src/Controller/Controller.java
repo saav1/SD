@@ -12,15 +12,11 @@ class Controller {
         try {
             init();
         } catch (Exception e) {
-            System.err.println("Controller's config file not found");
+            System.err.println(e.toString());
         }
     }
 
-    /**
-     * Does the same that the MyHTTPServer's init, but with minor changes in order to work like a Controller
-     * @param settings the readen settings.
-     * @see Parking.MyHTTPServer.MyHTTPServer
-     */
+
     private static void init() {
         try {
             SocketUtils.displayIPAdresses(); //Shows all available IP's that can connect to the server
