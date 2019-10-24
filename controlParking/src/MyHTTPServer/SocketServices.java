@@ -8,7 +8,7 @@ import java.net.*;
 import java.util.Collections;
 import java.util.Enumeration;
 
-public class SocketUtils {
+public class SocketServices {
 
 	public static void sendMessage( Socket socket, String message ) throws IOException{
 		

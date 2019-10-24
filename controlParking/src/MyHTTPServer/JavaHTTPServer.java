@@ -21,7 +21,7 @@ public class JavaHTTPServer implements Runnable{
 	static final String FILE_NOT_FOUND = "src/404.html";
 	static final String METHOD_NOT_SUPPORTED = "src/not_supported.html";
 	// port to listen connection
-	static final int PORT = 7085;
+	static final int PORT = 8089;
 	
 	// verbose mode
 	static final boolean verbose = true;
@@ -58,8 +58,13 @@ public class JavaHTTPServer implements Runnable{
 
 	@Override
 	public void run() {
+		
+		System.out.println("RUN..");
+		
 		// we manage our particular client connection
-		BufferedReader in = null; PrintWriter out = null; BufferedOutputStream dataOut = null;
+		BufferedReader in = null; 
+		PrintWriter out = null; 
+		BufferedOutputStream dataOut = null;
 		String fileRequested = "index.html";
 		
 		try {
@@ -118,6 +123,12 @@ public class JavaHTTPServer implements Runnable{
 				if (fileRequested.endsWith("/")) {
 					fileRequested += DEFAULT_FILE;
 				}
+				
+				System.out.println("..................................................");
+				System.out.println("FILEREQUESTED 2 : " + fileRequested);
+				System.out.println("..................................................");
+				
+				
 				
 				File file = new File(WEB_ROOT, fileRequested);
 				int fileLength = (int) file.length();

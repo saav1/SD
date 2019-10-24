@@ -6,8 +6,6 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 /**
- * Created by pavel on 23/10/16.
- * Running server
  */
 class MyHTTPServer {
     public static void main(String args[]) {
@@ -20,6 +18,7 @@ class MyHTTPServer {
         }
     }
 
+    
     /**
      * Initializes the HTTP Server with the readen config and serves connections to a web browser.
      * It also controls the amount of simultaneous connections by counting the number of threads that the main process has launched

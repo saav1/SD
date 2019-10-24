@@ -17,6 +17,7 @@ public class Sensor extends UnicastRemoteObject implements RemoteInterface, Seri
 	
 	private static Registrador registroInterface;
 	private static Registry registry;
+	
 	private final String nombre;
 	
 	
@@ -65,9 +66,9 @@ public class Sensor extends UnicastRemoteObject implements RemoteInterface, Seri
 		while( (sr = br.readLine()) != null )
 		{
 			String[] item = sr.split("=");
-			if(item[0].compareTo("Volumen") == 0 )this.volumen = Integer.parseInt(item[1]);
-			if(item[0].compareTo("UltimaFecha") == 0 ) this.ultimaFecha = item[1];
-			if(item[0].compareTo("Led") == 0 ) this.led = Integer.parseInt(item[1]);
+			if(item[0].compareTo("Volumen") == 0 )		this.volumen = Integer.parseInt(item[1]);
+			if(item[0].compareTo("UltimaFecha") == 0 )  this.ultimaFecha = item[1];
+			if(item[0].compareTo("Led") == 0 ) 			this.led = Integer.parseInt(item[1]);
 		}
 		
 		return 0; //OK
