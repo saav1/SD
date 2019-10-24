@@ -106,9 +106,10 @@ public class Sensor extends UnicastRemoteObject implements RemoteInterface, Seri
 		if(args.length >= 3) 
 		{
 			registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
-			
 			Sensor sensor = new Sensor(args[2]);
+			
 			registroInterface = (Registrador) registry.lookup(Registrador.NOMBRE);
+			
 			registroInterface.registrarSensor(sensor);
 			
 			System.out.println(">> " + sensor.getNombre() + " registrado.");

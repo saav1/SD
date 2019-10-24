@@ -43,6 +43,7 @@ class MyHTTPThread extends Thread {
                 String URL = requestParts[1];
                 if (URL.equals("/")) URL += (settings.DEFAULT_INDEX_PAGE);
                 String[] routeParts = URL.split("/");
+                
                 if (routeParts[1].equals(settings.DYNAMIC_CONTENT_KEYWORD))
                     serveDynamicRequest(routeParts.length == 3 ? routeParts[2] : "");
                 else serveStaticRequest(routeParts[1]);

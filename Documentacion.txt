@@ -115,7 +115,25 @@ Componentes:
 				- En caso de no existir devuelve una respueta de error. 
 		
 		EJEMPLO 2. SOLICITUD DE UN RECURSO DINÁMICO QUE SI EXISTE. 
+			- El servidor recibe la petición "GET/controladorSD/fecha?sonda=1 HTTP1.1"
+			- El servidor detecta el patrón de recurso dinámico (la subcadena "controladorSD"), por tanto es un recurso
+			dinámico.
+			- El servidor encapsula en un mensaje una petición  para controller indicando que desea obtener la fecha
+			actual del sensor registrado como 1. Se conecta a controlador y le envía la petición, quedando a la espera
+			de respuesta.
+			- El controlador recibe la petición de servidor, detecta los parámetros de la petición e invoca al componente
+			distribuido adecuado Sonda para obtener respuesta (la fecha actual del sensor 1). El controlador recibe la 
+			respuesta de SONDA (por ejemplo 20/09/2016), con este valor compone una página web HTML válida y lo devuelve en 
+			un mensaje de respuesta al servidor MyHTTPServer.
+			- El servidor recibe la respuesta y la envía a su vez al usuario que originalmente realizó la petición.
+
 		EJEMPLO 3. SOLICITUD DE UN RECURSO DINÁMICO QUE NO EXISTE. 
+			- El servidor recibe la petición "get/controladorSD/distancia?sonda=1 HTTP1.1"
+			- El servidor detecta el patrón de recurso dinámico (la subcadena "controladorSD"), por tanto es un recurso 
+			dinámico. 
+			- El controlador recibe la petición de servidor, detecta los parámetros de la petición, detecta que no es uno de
+			los parámetros correctos y devuelve un error del tipo "variable no valida". Este error es una página web HTML válida.
+			- El servidor recibe la respuesta y la envía a su vez al usuario que originalmente realizó la petición.
 
 		CONSIDERACIONES SOBRE EL CONTROLLER.
 			Como puede verse, el controlador es un intermediario entre el servidor web que atiende las peticiones HTTP y 
@@ -207,38 +225,6 @@ Errores.
 	INICIAR EL SERVIDOR INICANDO PUERTO DE ESCUCHA DEL SERVIDOR Y PUERTO DE CONEXIÓN AL CONTROLADOR.
 .......................................................................................................................................
 .......................................................................................................................................
-
-GUÍA DE DESPLIEGUE.
-	
-	Tanto el componente del servidor HTTP como el del Controlador son totalmente independientes el uno del otro. Pueden estar en 
-	marcha sin que el resto  de componentes esté activo. Sin embargo, el Registrador depende del rmiregistry (pues necesita un lugar 
-	donde registrarse) así como los sensores dependen del registrador para registrarse. Por tanto, el despliegue en orden es:
-
-1.Register
-	
-	Deberemos de encender el rmiregistry y pasándole como argumento el puerto (si no se lo pasamos, por defecto es el 1099) y el 
-	argumento de JavaRMI useCodeBaseOnly=false para evitar tener que generar los stubs:
-
-	rmiregistry <puerto> -J-Djava.rmi.server.useCodeBaseOnly=false &
-
-	Es importante ejecutarlo desde el directorio raíz de la carpeta en donde esté el código del proyecto(src).
-
-	Luego, ejecutamos el Register pasándole como argumento la IP y el puerto y como argumento de JAVARMI la propia IP del host
-
-	java -cp . -Djava.rmi.server.hostname = <mi IP> Parking.Registry.Register <IP> <PUERTO>
-
-	El registrador estará listo y preparado para escuchar peticiones.
-
-
-
-2.Sensor
-
-	Una vez tengamos el Registrador listo, pasaremos a registrar los sensores. Simplemente ejecutamos la clase pasándole como 
-	argumento la IP, el puerto del Registrador y el archivo del sensor y como argumento de JAVARMI la propia IP del host.
-
-	java -cp . -Djava.rmi.server.hostname = <MI IP> Parking.Sensor.Sensor <IP> <PUERTO> <ARCHIVO>
-
-	Cuando queramos, pulsamos Enter y pedirá una orden de desregistro al REGISTRADOR.
 
 
 
