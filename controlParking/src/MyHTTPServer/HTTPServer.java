@@ -18,6 +18,7 @@ import java.util.StringTokenizer;
 public class HTTPServer implements Runnable{
 
 	static final String DEFAULT_FILE = "src/index.html";
+	static final String NOT_FOUND = "src/404.html";
 	
 	static int PORT;
 	static int MAX_CONNECTIONS;
@@ -30,7 +31,7 @@ public class HTTPServer implements Runnable{
 	}
 	
 	
-	public static void main(String[] args) { 															//Args: HTTPServer.class <PORT> <MAX_CONNECTIONS>
+	public static void main(String[] args) throws InterruptedException { 															//Args: HTTPServer.class <PORT> <MAX_CONNECTIONS>
 		
 		/*
 		System.out.println("Args length: " + args.length);
@@ -45,19 +46,24 @@ public class HTTPServer implements Runnable{
 				//HTTPServer.PORT = Integer.parseInt(args[0]);
 				//HTTPServer.MAX_CONNECTIONS = Integer.parseInt(args[1]);
 				
-				HTTPServer.PORT = 1999;
-				HTTPServer.MAX_CONNECTIONS = 10;
+				HTTPServer.PORT = 1913;
+				HTTPServer.MAX_CONNECTIONS = 3;
 				
 				ServerSocket socketServidor = new ServerSocket(HTTPServer.PORT); 				//Parameter PORT to create server socket
 				System.out.println("Server started. \nListening for connections on port: " + HTTPServer.PORT);
 
-				while(Thread.activeCount() <= HTTPServer.MAX_CONNECTIONS) 
+				Thread thread = null;
+				while(true) 
 				{
+	
 					Socket clientSocket = socketServidor.accept();
 					HTTPServer myServer = new HTTPServer(clientSocket);
 					
-					Thread thread = new Thread(myServer);
+					thread = new Thread(myServer);
 					thread.start();
+					
+					
+					System.out.println("activeCount: " + thread.activeCount());
 				}
 					
 			}
@@ -89,54 +95,48 @@ public class HTTPServer implements Runnable{
 		
 		try
 		{
-			
 			br = new BufferedReader(new InputStreamReader(connect.getInputStream()));				//We read characters from CLIENT via INPUT STREAM on the socket.
 			bw = new DataOutputStream(connect.getOutputStream());
 			out = new PrintWriter(connect.getOutputStream());
 			
 			String[] input = new String(br.readLine()).split(" ");
 			
-			System.out.println("input length : " + input.length);
-
-			System.out.println(input[0].toString());
-			System.out.println(input[1].toString());
-			System.out.println(input[2].toString());
-
-			
-			
 			if(input[0].equals("GET"))
 			{
 				if(input[1].equals("/")) input[1] += DEFAULT_FILE;
 				File file = new File(new File("."), input[1]);
-				
-				
-				
 				int fileLength = (int)file.length();	
-				
-				
 				byte[] fileData = readFileData(file, fileLength);
 				
-
-				
 				sendMessageHTTPToClient(fileLength, 200, fileData); //OK
-
 			}
 			else
 			{
 				sendMessageHTTPToClient(0, 405, null); //OK
 
 			}
-			
-			
-			
 		}
 		catch(FileNotFoundException f)
 		{
-			sendMessageHTTPToClient(0, 404, null); //FILE NOT FOUND
+			String s = "/";
+			s += NOT_FOUND;
+			
+			File file = new File(new File("."), s);
+			
+			int fileLength = (int)file.length();	
+			
+			byte[] fileData;
+			
+			try {
+				fileData = readFileData(file, fileLength);
+				sendMessageHTTPToClient(fileLength, 404, fileData); //FILE NOT FOUND
+			} catch (IOException e) {
+
+			}
+			
 			
 			System.err.println("ERROR FILE NOT FOUND: " + f.getMessage());
-			f.printStackTrace();
-			
+
 		}
 		catch(IOException e)
 		{
@@ -144,6 +144,7 @@ public class HTTPServer implements Runnable{
 		}
 		finally
 		{
+			
 			try 
 			{
 				br.close();
@@ -166,7 +167,6 @@ public class HTTPServer implements Runnable{
 			bw = new DataOutputStream(connect.getOutputStream());
 			out = new PrintWriter(connect.getOutputStream());
 			
-			
 			if(cod == 200)//OK
 			{
 				out.println("HTTP/1.1 200 OK");														//We send HTTP Headers with data to client
@@ -178,11 +178,13 @@ public class HTTPServer implements Runnable{
 			}
 			else if(cod == 404)//FILE NOT FOUND
 			{
-				out.println("HTTP/1.1 404 FILE_NOT_FOUND");														//We send HTTP Headers with data to client
+				System.out.println("404 - ERROR [1]");
+				out.println("HTTP/1.1 404 File Not Found");														//We send HTTP Headers with data to client
 				out.println("Server: HTTPServer by STALYN ALEJNDRO : 1.0");
 				out.println("Date: " + new Date());
 				out.println("Content-type: " + "text/html");
 				out.println("Content-length: " + fileLength);
+				
 			}
 			else if(cod == 405)//METHOD NOT ALLOWED
 			{
@@ -203,7 +205,12 @@ public class HTTPServer implements Runnable{
 			
 			out.println(); 																		// Blank line between headers and content, very important !
 			out.flush(); 																		// Flush character output stream buffer
+			
+			System.out.println("[1] - filedata : " + fileData.toString());
+			System.out.println("[2] - fileLength : " + fileLength);
+			
 			bw.write(fileData, 0, fileLength);		
+			
 			bw.flush();
 			
 		}
@@ -213,6 +220,7 @@ public class HTTPServer implements Runnable{
 		}
 		finally
 		{
+			
 			try {
 				bw.close();
 				out.close();
