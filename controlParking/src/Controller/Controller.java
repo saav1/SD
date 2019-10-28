@@ -33,23 +33,18 @@ public class Controller extends Thread implements Runnable{
 		this.connect = c;
 	}
 	
-
 	public static void main(String[] args) {
-
 		try
 		{
-			
 			ServerSocket c_Server = new ServerSocket(HTTPServer.CONTROLLER_PORT);
 			System.out.println("Controller active in: " + HTTPServer.CONTROLLER_IP + " : " + HTTPServer.CONTROLLER_PORT);
 			
 			while(true)
 			{
-
 				Socket c_Client = c_Server.accept();
 				Controller controller = new Controller(c_Client);
 				Thread thread = new Thread(controller);
 				thread.start();
-
 			}
 		}
 		catch(Exception e)
@@ -65,44 +60,28 @@ public class Controller extends Thread implements Runnable{
 		BufferedReader br = null;
 		String ask = "";
 		String ans = "";
-		
-		System.out.println("[001]");
-		
+				
 		try
 		{
 			ask = readSocketServer();
-			
-			System.out.println("ASK: " + ask);
-			
 			registry = LocateRegistry.getRegistry(HTTPServer.REGISTRY_IP, HTTPServer.REGISTRY_PORT);
-
 			String[] s = ask.split("&");
-
-			//System.out.println("PETICIÓN: " + s[0] + " " + s[1]);
-			
-			String respuesta = "";
-			
-			System.out.println("s[0]:" + s[0] + " s[1]:" + s[1] + " s[2]:" + s[2]);
+			String respuesta = "";	
 			
 			if(s[1].contains("all"))
 			{
-				//Hay que mostrar todos los sensores disponibles.
 				int i = 0;
 				while(i <= 4)
 				{
 					i++;
 					try
 					{
-
-
 						String sensorNombre = "Sensor/Sensor"+String.valueOf(i);
 						System.out.println("NOMBRE SENSOR: " + sensorNombre);
 						Object remoteObject = registry.lookup(sensorNombre);
 						if(remoteObject instanceof RemoteInterface) 
 						{
-							
 							RemoteInterface sensor = (RemoteInterface) remoteObject;
-							
 							respuesta += "Sensor"+i+"<br>";
 							respuesta += String.valueOf(sensor.getVolumen()) + "<br>" ;
 							respuesta += sensor.getFecha() + "<br>";
@@ -118,10 +97,8 @@ public class Controller extends Thread implements Runnable{
 					}
 					catch(NotBoundException e)
 					{
-						;
+						respuesta = "error";
 					}
-
-					
 				}
 				
 			}

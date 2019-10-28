@@ -11,8 +11,6 @@ public class Registrador  extends UnicastRemoteObject implements RegistradorInte
 	public static final String NOMBRE = "Registro";
 	private final Registry registro;
 	
-	
-	
 	Registrador(Registry registro)throws RemoteException{
 		super();
 		this.registro = registro;
@@ -23,7 +21,6 @@ public class Registrador  extends UnicastRemoteObject implements RegistradorInte
 		{
 			registro.rebind(sensor.getNombre(), sensor);
 			System.out.println("Registrado Sensor: " +  sensor.getNombre());
-			
 		}
 		catch(RemoteException e)
 		{
@@ -49,12 +46,11 @@ public class Registrador  extends UnicastRemoteObject implements RegistradorInte
 	
 	public static void main(String[] args) throws Exception {
 		
-		if(args.length >= 2) {
-			
+		if(args.length >= 2)
+		{
 			Registry registry = LocateRegistry.getRegistry(args[0], Integer.parseInt(args[1]));
 			Registrador master = new Registrador(registry);
             registry.rebind(Registrador.NOMBRE, master);	
-            
             System.out.println("REGISTRO NOMBRE: " + Registrador.NOMBRE);
 			System.out.println("REGISTRADOR OK -> " + args[0] + " : " + args[1]);
 			

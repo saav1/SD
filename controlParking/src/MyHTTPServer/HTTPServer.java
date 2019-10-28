@@ -65,64 +65,34 @@ public class HTTPServer extends Thread implements Runnable{
 	}
 	
 	public static void main(String[] args) throws InterruptedException{ 															//Args: HTTPServer.class <PORT> <MAX_CONNECTIONS>
-		
-		/*
-		System.out.println("Args length: " + args.length);
-		System.out.println("args[0]: " + args[0]);
-		System.out.println("args[1]: " + args[1]);
-		*/
 
 		if(args.length <= 2) 
 		{
 			try 
 			{
-				//HTTPServer.PORT = Integer.parseInt(args[0]);
-				//HTTPServer.MAX_CONNECTIONS = Integer.parseInt(args[1]);
-				
-				//HTTPServer.HTTP_PORT = 1025;
-				//HTTPServer.MAX_CONNECTIONS = 3;
-				
-
 				readSettings("src/MyHTTPServer/settings.txt");
-				
-		
-				
-				ServerSocket socketServidor = new ServerSocket(HTTPServer.HTTP_PORT); 				//Parameter PORT to create server socket
+				ServerSocket socketServidor = new ServerSocket(HTTPServer.HTTP_PORT); 														//Parameter PORT to create server socket
 				System.out.println("Server started. \nListening for connections on port: " + HTTPServer.HTTP_PORT);
-
 				Thread thread = null;
-				int count = 0;
-
 				while(true) 
 				{
-					//System.out.println("activeCount: " + thread.activeCount());
 					if(Thread.activeCount() <= MAX_CONNECTIONS)
 					{
-					
-//					if(count <= MAX_CONNECTIONS)
-//					{
-						count++;
 						Socket clientSocket = socketServidor.accept();
 						HTTPServer myServer = new HTTPServer(clientSocket);
 						thread = new Thread(myServer);
 						thread.start();
-					}
-					else
-					{
-						thread.sleep(10000);
-						//socketServidor.close();
-					}
-	
+					}	
 				}	
 			}
 			catch(Exception e)
 			{
-				System.err.println("SERVER CONNECTIN ERROR: " + e.getMessage());
+				System.err.println("SERVER CONNECTION ERROR: " + e.getMessage());
 			}	
 		}
 		else
 		{
-			System.err.println("ERROR ARGS: /.class <PORT> <MAX_CONNECTIONS>");
+			System.err.println("ERROR ARGS: /.class <PORT> <MAX_CONNECTIONS> ");
 		}
 	}
 	
@@ -130,25 +100,19 @@ public class HTTPServer extends Thread implements Runnable{
 	@Override
 	public void run() { 																				//We manage our particular Client Connection
 		
-		//System.out.println("RUN..");
 		BufferedReader br = null;			//BufferReader
-
 		try
 		{
-			br = new BufferedReader(new InputStreamReader(connect.getInputStream()));				//We read characters from CLIENT via INPUT STREAM on the socket.		
+			br = new BufferedReader(new InputStreamReader(connect.getInputStream()));						
 			String[] input = new String(br.readLine()).split(" ");
 			
-			if(input[0].equals("GET"))
+			if(input[0].equals("GET") || input[0].equals("SET") )
 			{
 				if(input[1].equals("/")) input[1] += DEFAULT_FILE;
-				
-
 				if(input[1].contains("/controlSD"))servicioDinamico(input[1]);
 				else servicioEstatico(input[1]);
-			
 				
 			}
-
 			else
 			{
 				sendMessageHTTPToClient(0, 405, null); //ERROR 404 FILE NOT FOUND
@@ -162,13 +126,13 @@ public class HTTPServer extends Thread implements Runnable{
 			File file = new File(ROOT, s);
 			int fileLength = (int)file.length();	
 			byte[] fileData;
-			
 			try 
 			{
 				fileData = readFileData(file, fileLength);
-				sendMessageHTTPToClient(fileLength, 404, fileData); //FILE NOT FOUND
+				sendMessageHTTPToClient(fileLength, 404, fileData); 	// 404 FILE NOT FOUND
+				
 			} catch (IOException e) {
-
+				System.err.println("ERROR IO EXCEPTION: " + e.getMessage());
 			}
 			
 			System.err.println("ERROR FILE NOT FOUND: " + f.getMessage());
@@ -177,7 +141,6 @@ public class HTTPServer extends Thread implements Runnable{
 		{
 			System.err.println("ERROR IO EXCEPTION: " + e.getMessage());
 		}
-
 	}
 	
 	private void servicioEstatico(String request) throws IOException {
@@ -185,7 +148,6 @@ public class HTTPServer extends Thread implements Runnable{
 		File file = new File(ROOT, request);
 		int fileLength = (int)file.length();	
 		byte[] fileData = readFileData(file, fileLength);
-		
 		sendMessageHTTPToClient(fileLength, 200, fileData); //OK
 	}
 	
@@ -198,11 +160,9 @@ public class HTTPServer extends Thread implements Runnable{
 			controllerSocket = new Socket(HTTPServer.CONTROLLER_IP, HTTPServer.CONTROLLER_PORT);
 			messageToController(controllerSocket, request);
 			System.out.println("servicioDinámico: " + request);
-			String ans = receiveMessage(controllerSocket);
-			System.out.println("Answer : " + ans);
+			String ans = receiveMessageFromController(controllerSocket);
 			
 			 File file = new File(ROOT, DEFAULT_FILE); 
-			  
 			 BufferedReader br = new BufferedReader(new FileReader(file)); 
 			 
 			 char h = '"';
@@ -211,61 +171,35 @@ public class HTTPServer extends Thread implements Runnable{
 			 String stt = "<label id="+h+"respuesta"+h+">"+ans+"</label>";
 			 while ((st = br.readLine()) != null)
 			 {
-				 if(st.contains("respuesta")) 
-				 {
-					 res += stt;
-				 }else
-				 {
-					 res += st; 
-				 }
-				 
+				 if(st.contains("respuesta"))res += stt;
+				 else res += st; 	 
 			 }
-			  
-			
-			 byte[] b = res.getBytes();
 			 
-			 sendMessageHTTPToClient(res.length(), 200, b);
-			 
-			 System.out.println("RESPUESTA: " + res);
-			 
-			
+			byte[] b = res.getBytes();
+			sendMessageHTTPToClient(res.length(), 200, b);
 			if(ans.contains("error"))sendMessageHTTPToClient(0, 404, null);	//404 : NOT FOUND
 			controllerSocket.close();
-			
-			
-			
-			
 		}
 		catch(IOException e)
 		{
 			System.out.println("ERROR 409");
 			sendMessageHTTPToClient(0, 409, null);	//409 : CONTROLLER CONEXION FAILED
 		}
-
 	}
 	
 	private void messageToController(Socket s_controller, String request) throws IOException{
-		
-		
 		PrintWriter out = new PrintWriter(s_controller.getOutputStream());
-		
 		out.println(request);
-		out.println(); 																		// Blank line between headers and content, very important !
+		out.println(); 																								// Blank line between headers and content, very important !
 		out.flush(); 
 	}
 	
-	private String receiveMessage(Socket s_controller) throws IOException{
-
+	private String receiveMessageFromController(Socket s_controller) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(s_controller.getInputStream()));
 		StringBuilder sb = new StringBuilder();
 		String s;
-		
-		while( ( s = br.readLine() ) != null && !s.equals("") )
-		{
-			sb.append(s).append("\n");
-			
-		}
-		
+		while( ( s = br.readLine() ) != null && !s.equals("") )sb.append(s).append("\n");
+
 		return sb.toString();
 	}
 	
@@ -274,7 +208,6 @@ public class HTTPServer extends Thread implements Runnable{
 		
 		PrintWriter out = null;
 		DataOutputStream bw = null;			
-		//System.out.println("COD: " + cod);
 		try
 		{
 			bw = new DataOutputStream(connect.getOutputStream());
@@ -282,21 +215,19 @@ public class HTTPServer extends Thread implements Runnable{
 			
 			if(cod == 200)//OK
 			{
-				out.println("HTTP/1.1 200 OK");														//We send HTTP Headers with data to client
+				out.println("HTTP/1.1 200 OK");		//We send HTTP Headers with data to client
 				out.println("Server: HTTPServer by STALYN ALEJNDRO : 1.0");
 				out.println("Date: " + new Date());
 				out.println("Content-type: " + "text/html");
 				out.println("Content-length: " + fileLength);
-		
 			}
 			else if(cod == 404)//FILE NOT FOUND
 			{
-				out.println("HTTP/1.1 404 File Not Found");														//We send HTTP Headers with data to client
+				out.println("HTTP/1.1 404 File Not Found");	
 				out.println("Server: HTTPServer by STALYN ALEJNDRO : 1.0");
 				out.println("Date: " + new Date());
 				out.println("Content-type: " + "text/html");
 				out.println("Content-length: " + fileLength);
-				
 			}
 			else if(cod == 405)//METHOD NOT ALLOWED
 			{
@@ -314,9 +245,8 @@ public class HTTPServer extends Thread implements Runnable{
 				out.println("Content-type: " + "text/html");
 				out.println("Content-length: " + fileLength);
 			}
-			
-			out.println(); 																		// Blank line between headers and content, very important !
-			out.flush(); 																		// Flush character output stream buffer
+			out.println(); 	// Blank line between headers and content, very important !
+			out.flush(); 	// Flush character output stream buffer
 			bw.write(fileData, 0, fileLength);		
 			bw.flush();
 			
@@ -360,11 +290,6 @@ public class HTTPServer extends Thread implements Runnable{
 		return fileData;
 		
 	}
-	
-
-	
-
-
 }
 
 
