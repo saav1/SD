@@ -23,19 +23,46 @@ public class HTTPServer extends Thread implements Runnable{
 	static final String DEFAULT_FILE = "index.html";
 	static final String NOT_FOUND = "404.html";
 	
-	public static int PORT;
-	public static int MAX_CONNECTIONS;
+	public static int MAX_CONNECTIONS=5;
+	public static int HTTP_PORT=1025;
+	public static String CONTROLLER_IP="127.0.0.1";
+	public static int CONTROLLER_PORT=1026;
+	public static String REGISTRY_IP="127.0.0.1";
+	public static int REGISTRY_PORT=1099;
+	
+	
+	
 	static boolean MAX_REACHED = false;
 	
 
 	
 	private Socket connect;
 	
-	public HTTPServer(Socket connect) {
+	public HTTPServer(Socket connect) throws Exception {
 		
 		this.connect = connect;
+		
 	}
 	
+	public static int readSettings(String file) throws Exception{
+		String sr;
+		BufferedReader br = new BufferedReader(new FileReader(file));
+
+		while( (sr = br.readLine()) != null )
+		{
+			String[] item = sr.split("=");
+			
+			if(item[0].compareTo("MAX_CONNECTIONS") == 0 )		HTTPServer.MAX_CONNECTIONS = Integer.parseInt(item[1]);
+			if(item[0].compareTo("HTTP_PORT") == 0 ) 			HTTPServer.HTTP_PORT = Integer.parseInt(item[1]);
+			if(item[0].compareTo("CONTROLLER_IP") == 0 ) 		HTTPServer.CONTROLLER_IP = item[1];
+			if(item[0].compareTo("CONTROLLER_PORT") == 0 ) 		HTTPServer.CONTROLLER_PORT = Integer.parseInt(item[1]);
+			if(item[0].compareTo("REGISTRY_IP") == 0 ) 			HTTPServer.REGISTRY_IP = item[1];
+			if(item[0].compareTo("REGISTRY_PORT") == 0 ) 		HTTPServer.REGISTRY_PORT = Integer.parseInt(item[1]);
+
+		}
+		
+		return 0; //OK
+	}
 	
 	public static void main(String[] args) throws InterruptedException{ 															//Args: HTTPServer.class <PORT> <MAX_CONNECTIONS>
 		
@@ -52,20 +79,29 @@ public class HTTPServer extends Thread implements Runnable{
 				//HTTPServer.PORT = Integer.parseInt(args[0]);
 				//HTTPServer.MAX_CONNECTIONS = Integer.parseInt(args[1]);
 				
-				HTTPServer.PORT = 1025;
-				HTTPServer.MAX_CONNECTIONS = 3;
+				//HTTPServer.HTTP_PORT = 1025;
+				//HTTPServer.MAX_CONNECTIONS = 3;
 				
-				ServerSocket socketServidor = new ServerSocket(HTTPServer.PORT); 				//Parameter PORT to create server socket
-				System.out.println("Server started. \nListening for connections on port: " + HTTPServer.PORT);
+
+				readSettings("src/MyHTTPServer/settings.txt");
+				
+		
+				
+				ServerSocket socketServidor = new ServerSocket(HTTPServer.HTTP_PORT); 				//Parameter PORT to create server socket
+				System.out.println("Server started. \nListening for connections on port: " + HTTPServer.HTTP_PORT);
 
 				Thread thread = null;
-				
+				int count = 0;
 
 				while(true) 
 				{
 					//System.out.println("activeCount: " + thread.activeCount());
 					if(Thread.activeCount() <= MAX_CONNECTIONS)
 					{
+					
+//					if(count <= MAX_CONNECTIONS)
+//					{
+						count++;
 						Socket clientSocket = socketServidor.accept();
 						HTTPServer myServer = new HTTPServer(clientSocket);
 						thread = new Thread(myServer);
@@ -73,12 +109,13 @@ public class HTTPServer extends Thread implements Runnable{
 					}
 					else
 					{
-						socketServidor.close();
+						thread.sleep(10000);
+						//socketServidor.close();
 					}
 	
 				}	
 			}
-			catch(IOException e)
+			catch(Exception e)
 			{
 				System.err.println("SERVER CONNECTIN ERROR: " + e.getMessage());
 			}	
@@ -98,18 +135,20 @@ public class HTTPServer extends Thread implements Runnable{
 
 		try
 		{
-			br = new BufferedReader(new InputStreamReader(connect.getInputStream()));				//We read characters from CLIENT via INPUT STREAM on the socket.
-			
+			br = new BufferedReader(new InputStreamReader(connect.getInputStream()));				//We read characters from CLIENT via INPUT STREAM on the socket.		
 			String[] input = new String(br.readLine()).split(" ");
 			
 			if(input[0].equals("GET"))
 			{
 				if(input[1].equals("/")) input[1] += DEFAULT_FILE;
 				
+
 				if(input[1].contains("/controlSD"))servicioDinamico(input[1]);
-				else servicioEstatico(input[1]);								//SERVICIO ESTÁTICO			
+				else servicioEstatico(input[1]);
+			
 				
 			}
+
 			else
 			{
 				sendMessageHTTPToClient(0, 405, null); //ERROR 404 FILE NOT FOUND
@@ -156,7 +195,7 @@ public class HTTPServer extends Thread implements Runnable{
 		Socket controllerSocket = null;
 		try
 		{
-			controllerSocket = new Socket(Controller.IP, Controller.PORT);
+			controllerSocket = new Socket(HTTPServer.CONTROLLER_IP, HTTPServer.CONTROLLER_PORT);
 			messageToController(controllerSocket, request);
 			System.out.println("servicioDinámico: " + request);
 			String ans = receiveMessage(controllerSocket);

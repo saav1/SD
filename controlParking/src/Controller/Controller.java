@@ -25,12 +25,6 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 public class Controller extends Thread implements Runnable{
-
-	public static int PORT = 1026;
-	public static String IP = "localhost";
-	public static String REGISTER_IP = "127.0.0.1";
-	public static int REGISTER_PORT = 1099;
-	
 	
 	private static Registry registry;
 	private Socket connect; 
@@ -44,8 +38,9 @@ public class Controller extends Thread implements Runnable{
 
 		try
 		{
-			ServerSocket c_Server = new ServerSocket(Controller.PORT);
-			System.out.println("Controller active in: " + Controller.IP + " : " + Controller.PORT);
+			
+			ServerSocket c_Server = new ServerSocket(HTTPServer.CONTROLLER_PORT);
+			System.out.println("Controller active in: " + HTTPServer.CONTROLLER_IP + " : " + HTTPServer.CONTROLLER_PORT);
 			
 			while(true)
 			{
@@ -57,9 +52,9 @@ public class Controller extends Thread implements Runnable{
 
 			}
 		}
-		catch(IOException e)
+		catch(Exception e)
 		{
-			System.err.println("ERROR CONTROLLER");
+			System.err.println("ERROR CONTROLLER : " + e.getMessage());
 		}
 	}
 
@@ -79,13 +74,15 @@ public class Controller extends Thread implements Runnable{
 			
 			System.out.println("ASK: " + ask);
 			
-			registry = LocateRegistry.getRegistry(REGISTER_IP, REGISTER_PORT);
+			registry = LocateRegistry.getRegistry(HTTPServer.REGISTRY_IP, HTTPServer.REGISTRY_PORT);
 
 			String[] s = ask.split("&");
 
 			//System.out.println("PETICIÓN: " + s[0] + " " + s[1]);
 			
 			String respuesta = "";
+			
+			System.out.println("s[0]:" + s[0] + " s[1]:" + s[1] + " s[2]:" + s[2]);
 			
 			if(s[1].contains("all"))
 			{
@@ -114,7 +111,7 @@ public class Controller extends Thread implements Runnable{
 							respuesta += "<br><br>";
 							
 							System.out.println(".............................................");
-							System.out.println("REEEEESPUESTA: " + respuesta);
+							System.out.println("RESPUESTA: " + respuesta);
 							System.out.println(".............................................");
 
 						}					
@@ -128,7 +125,7 @@ public class Controller extends Thread implements Runnable{
 				}
 				
 			}
-			else 
+			else if(!s[2].contains("set"))
 			{
 				String[] num = s[0].split("="); //num[1] será el número del sensor.
 				
@@ -157,9 +154,31 @@ public class Controller extends Thread implements Runnable{
 				}
 				catch(NotBoundException e)
 				{
-					respuesta = "error";
+					respuesta = "SENSOR NO ENCONTRADO!";
 				}
 
+			}
+			else if(s[2].contains("set"))
+			{
+				
+				String[] numSensor = s[1].split("=");
+				String[] setValue = s[2].split("=");
+				int value = Integer.parseInt(setValue[1].trim());
+				try
+				{
+					Object remoteObject = registry.lookup("Sensor/Sensor" + numSensor[1]);
+					if(remoteObject instanceof RemoteInterface) {
+						
+						RemoteInterface sensor = (RemoteInterface) remoteObject;
+						sensor.setLed(value);
+						
+					}
+							
+				}
+				catch(NotBoundException e)
+				{
+					respuesta = "SENSOR NO ENCONTRADO!";
+				}
 			}
 			
 			System.out.println("Respuesta : " + respuesta);
