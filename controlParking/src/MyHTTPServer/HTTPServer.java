@@ -25,9 +25,9 @@ public class HTTPServer extends Thread implements Runnable{
 	
 	public static int MAX_CONNECTIONS=5;
 	public static int HTTP_PORT=1025;
-	public static String CONTROLLER_IP="127.0.0.1";
+	public static String CONTROLLER_IP="172.20.43.29";
 	public static int CONTROLLER_PORT=1026;
-	public static String REGISTRY_IP="127.0.0.1";
+	public static String REGISTRY_IP="172.20.43.30";
 	public static int REGISTRY_PORT=1099;
 	
 	
