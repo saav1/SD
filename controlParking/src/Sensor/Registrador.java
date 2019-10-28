@@ -6,7 +6,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Registrador extends UnicastRemoteObject{
+public class Registrador  extends UnicastRemoteObject implements RegistradorInterface {
 
 	public static final String NOMBRE = "Registro";
 	private final Registry registro;
@@ -60,10 +60,42 @@ public class Registrador extends UnicastRemoteObject{
 			
 		}else {
 			
-			System.out.println("Wrong args: <IP> <PORT>");
+			System.out.println("ERROR ARGUMENTOS : <IP> <PORT>");
 		}
 		
 	}
+
+	@Override
+	public String getNombre() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getFecha() throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getVolumen() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public int getLed() throws RemoteException {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public void setLed(int led) throws RemoteException {
+		// TODO Auto-generated method stub
+		
+	}
+
+
 
 
 }

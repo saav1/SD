@@ -39,13 +39,21 @@ class ControllerThread extends Thread {
     public void run() {
         try {
             String response;
+            
             registry = LocateRegistry.getRegistry(settings.REGISTRY_IP, settings.REGISTRY_PORT);
+           
             String query = SocketUtils.receiveMessage(requestSocket).replaceAll("\\n", "");
+           
             System.out.println("query = " + query);
+            
             if (query.equals("")) response = sendAvailableSensors();
+            
             else response = processQuery(query);
+            
             SocketUtils.sendMessage(requestSocket, response + "\n");
+            
             requestSocket.close();
+        
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -89,8 +97,10 @@ class ControllerThread extends Thread {
     private String getSensorProperty(String sensorName, String resource) {
         try {
             Object returnedValue, remoteObject = registry.lookup(sensorName);
+           
             if (remoteObject instanceof SensorServices) {
                 SensorServices sensor = (SensorServices) remoteObject;
+               
                 if (resource.contains("=")) {
                     String[] resourceParts = resource.split("=");
                     int param;
