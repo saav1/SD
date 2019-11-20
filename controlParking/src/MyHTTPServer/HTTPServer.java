@@ -44,25 +44,6 @@ public class HTTPServer extends Thread implements Runnable{
 		
 	}
 	
-	public static int readSettings(String file) throws Exception{
-		String sr;
-		BufferedReader br = new BufferedReader(new FileReader(file));
-
-		while( (sr = br.readLine()) != null )
-		{
-			String[] item = sr.split("=");
-			
-			if(item[0].compareTo("MAX_CONNECTIONS") == 0 )		HTTPServer.MAX_CONNECTIONS = Integer.parseInt(item[1]);
-			if(item[0].compareTo("HTTP_PORT") == 0 ) 			HTTPServer.HTTP_PORT = Integer.parseInt(item[1]);
-			if(item[0].compareTo("CONTROLLER_IP") == 0 ) 		HTTPServer.CONTROLLER_IP = item[1];
-			if(item[0].compareTo("CONTROLLER_PORT") == 0 ) 		HTTPServer.CONTROLLER_PORT = Integer.parseInt(item[1]);
-			if(item[0].compareTo("REGISTRY_IP") == 0 ) 			HTTPServer.REGISTRY_IP = item[1];
-			if(item[0].compareTo("REGISTRY_PORT") == 0 ) 		HTTPServer.REGISTRY_PORT = Integer.parseInt(item[1]);
-
-		}
-		
-		return 0; //OK
-	}
 	
 	public static void main(String[] args) throws InterruptedException{ 															//Args: HTTPServer.class <PORT> <MAX_CONNECTIONS>
 
@@ -70,7 +51,6 @@ public class HTTPServer extends Thread implements Runnable{
 		{
 			try 
 			{
-				readSettings("src/MyHTTPServer/settings.txt");
 				ServerSocket socketServidor = new ServerSocket(HTTPServer.HTTP_PORT); 														//Parameter PORT to create server socket
 				System.out.println("Server started. \nListening for connections on port: " + HTTPServer.HTTP_PORT);
 				Thread thread = null;
