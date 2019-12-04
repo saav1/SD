@@ -30,7 +30,7 @@ public class SocketServices {
 		
 		return sb.toString();
 	}
-	q
+	
 	public static void displayIPAdresses() {
 		try
 		{

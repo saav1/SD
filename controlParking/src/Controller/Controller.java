@@ -97,7 +97,7 @@ public class Controller extends Thread implements Runnable{
 					}
 					catch(NotBoundException e)
 					{
-						respuesta = "error";
+						respuesta += " ";
 					}
 				}
 				
