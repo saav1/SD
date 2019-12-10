@@ -71,10 +71,8 @@ namespace clienteNet
         private void Button1_Click(object sender, EventArgs e)
         {
 
-            localhost1.Sensor sensor = new localhost1.Sensor();
 
-
-            string s = "Sensor " + sensor.getFecha() + " " + sensor.getLed();
+           
 
             descAddSonda.Text = s;
         }

@@ -835,3 +835,265 @@ Caused by: java.net.BindException: Address already in use: bind
 	at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:408)
 	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:497)
 
+10-Dec-2019 17:59:48.657 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/9.0.0.M9
+10-Dec-2019 17:59:48.660 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 4 2016 18:22:47 UTC
+10-Dec-2019 17:59:48.661 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         9.0.0.0
+10-Dec-2019 17:59:48.661 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+10-Dec-2019 17:59:48.662 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+10-Dec-2019 17:59:48.662 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+10-Dec-2019 17:59:48.662 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jre1.8.0_212
+10-Dec-2019 17:59:48.663 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_212-b10
+10-Dec-2019 17:59:48.663 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+10-Dec-2019 17:59:48.663 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 17:59:48.663 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 17:59:48.664 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+10-Dec-2019 17:59:48.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\conf\logging.properties
+10-Dec-2019 17:59:48.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Dec-2019 17:59:48.665 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 17:59:48.666 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 17:59:48.667 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\temp
+10-Dec-2019 17:59:48.671 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jre1.8.0_212\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;%INTELDEV_REDIST%redist\intel64\compiler;%INTELDEV_REDIST%redist\ia32\compiler;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\Windows\EPS\programas;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2019.3.0\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Common Files\AspenTech Shared\;C:\Users\EPS\AppData\Local\Microsoft\WindowsApps;AspenTech\Aspen Hydraulics;C:\Program Files (x86)\Brackets\command;C:\Program Files\Csound6_x64\bin;C:\oracle\instantclient;C:\Users\EPS\AppData\Roaming\npm;C:\Program Files\Java\jre1.8.0_212\bin;C:\Program Files\Java\Java3D\1.5.1\bin;C:\Program Files\MATLAB\R2019a\bin;C:\Program Files\MySQL\mysql-8.0.11\bin;C:\Program Files (x86)\nodejs;C:\Python27\;C:\Python27\Scripts;C:\Users\EPS\AppData\Local\Microsoft\WindowsApps;AspenTech\Aspen Hydraulics;.
+10-Dec-2019 17:59:48.983 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 17:59:49.359 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+10-Dec-2019 17:59:49.365 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 17:59:49.369 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+10-Dec-2019 17:59:49.369 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1391 ms
+10-Dec-2019 17:59:49.432 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+10-Dec-2019 17:59:49.433 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/9.0.0.M9
+10-Dec-2019 17:59:49.480 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\EjemploServicios.war
+10-Dec-2019 17:59:53.099 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+10-Dec-2019 17:59:55.711 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\EjemploServicios.war has finished in 6,229 ms
+10-Dec-2019 17:59:55.714 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war
+10-Dec-2019 17:59:59.331 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+10-Dec-2019 18:00:01.097 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war has finished in 5,383 ms
+10-Dec-2019 18:00:01.100 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\docs
+10-Dec-2019 18:00:01.143 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\docs has finished in 43 ms
+10-Dec-2019 18:00:01.144 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\examples
+10-Dec-2019 18:00:01.933 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\examples has finished in 789 ms
+10-Dec-2019 18:00:01.934 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\host-manager
+10-Dec-2019 18:00:02.033 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\host-manager has finished in 100 ms
+10-Dec-2019 18:00:02.037 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\manager
+10-Dec-2019 18:00:02.116 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\manager has finished in 79 ms
+10-Dec-2019 18:00:02.123 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\ROOT
+10-Dec-2019 18:00:02.169 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\ROOT has finished in 46 ms
+10-Dec-2019 18:00:02.179 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+10-Dec-2019 18:00:02.199 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+10-Dec-2019 18:00:02.203 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 12833 ms
+10-Dec-2019 18:25:03.622 INFO [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.HostConfig.undeploy Undeploying context [/Sensor]
+10-Dec-2019 18:25:03.844 SEVERE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor\axis2-web\include] could not be completely deleted. The presence of the remaining files may cause problems
+10-Dec-2019 18:25:03.882 SEVERE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor\axis2-web] could not be completely deleted. The presence of the remaining files may cause problems
+10-Dec-2019 18:25:04.229 SEVERE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.deleteDir [C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor] could not be completely deleted. The presence of the remaining files may cause problems
+10-Dec-2019 18:25:04.230 SEVERE [ContainerBackgroundProcessor[StandardEngine[Catalina]]] org.apache.catalina.startup.ExpandWar.delete [C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor] could not be completely deleted. The presence of the remaining files may cause problems
+10-Dec-2019 18:25:04.252 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war
+10-Dec-2019 18:25:04.331 INFO [localhost-startStop-2] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war has finished in 78 ms
+10-Dec-2019 18:25:05.215 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+10-Dec-2019 18:25:05.218 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:25:05.276 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:25:05.278 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+10-Dec-2019 18:25:05.459 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:25:05.462 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:25:05.466 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:25:05.474 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:25:09.016 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer Could not contact localhost:8005. Tomcat may not be running.
+10-Dec-2019 18:25:09.019 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer Catalina.stop: 
+ java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.apache.catalina.startup.Catalina.stopServer(Catalina.java:476)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:408)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:497)
+
+10-Dec-2019 18:25:12.544 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer Could not contact localhost:8005. Tomcat may not be running.
+10-Dec-2019 18:25:12.546 SEVERE [main] org.apache.catalina.startup.Catalina.stopServer Catalina.stop: 
+ java.net.ConnectException: Connection refused: connect
+	at java.net.DualStackPlainSocketImpl.connect0(Native Method)
+	at java.net.DualStackPlainSocketImpl.socketConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.doConnect(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connectToAddress(Unknown Source)
+	at java.net.AbstractPlainSocketImpl.connect(Unknown Source)
+	at java.net.PlainSocketImpl.connect(Unknown Source)
+	at java.net.SocksSocketImpl.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.connect(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at java.net.Socket.<init>(Unknown Source)
+	at org.apache.catalina.startup.Catalina.stopServer(Catalina.java:476)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.apache.catalina.startup.Bootstrap.stopServer(Bootstrap.java:408)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:497)
+
+10-Dec-2019 18:25:14.896 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/9.0.0.M9
+10-Dec-2019 18:25:14.898 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 4 2016 18:22:47 UTC
+10-Dec-2019 18:25:14.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         9.0.0.0
+10-Dec-2019 18:25:14.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+10-Dec-2019 18:25:14.899 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+10-Dec-2019 18:25:14.900 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+10-Dec-2019 18:25:14.900 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jre1.8.0_212
+10-Dec-2019 18:25:14.900 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_212-b10
+10-Dec-2019 18:25:14.900 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+10-Dec-2019 18:25:14.901 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:25:14.901 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:25:14.901 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+10-Dec-2019 18:25:14.901 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\conf\logging.properties
+10-Dec-2019 18:25:14.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Dec-2019 18:25:14.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:25:14.902 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:25:14.903 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\temp
+10-Dec-2019 18:25:14.906 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jre1.8.0_212\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;%INTELDEV_REDIST%redist\intel64\compiler;%INTELDEV_REDIST%redist\ia32\compiler;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\Windows\EPS\programas;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2019.3.0\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Common Files\AspenTech Shared\;C:\Users\EPS\AppData\Local\Microsoft\WindowsApps;AspenTech\Aspen Hydraulics;C:\Program Files (x86)\Brackets\command;C:\Program Files\Csound6_x64\bin;C:\oracle\instantclient;C:\Users\EPS\AppData\Roaming\npm;C:\Program Files\Java\jre1.8.0_212\bin;C:\Program Files\Java\Java3D\1.5.1\bin;C:\Program Files\MATLAB\R2019a\bin;C:\Program Files\MySQL\mysql-8.0.11\bin;C:\Program Files (x86)\nodejs;C:\Python27\;C:\Python27\Scripts;C:\Users\EPS\AppData\Local\Microsoft\WindowsApps;AspenTech\Aspen Hydraulics;.
+10-Dec-2019 18:25:15.217 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:25:15.591 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+10-Dec-2019 18:25:15.597 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:25:15.602 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+10-Dec-2019 18:25:15.604 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1396 ms
+10-Dec-2019 18:25:15.663 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+10-Dec-2019 18:25:15.664 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/9.0.0.M9
+10-Dec-2019 18:25:15.713 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\EjemploServicios.war
+10-Dec-2019 18:25:19.522 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+10-Dec-2019 18:25:21.918 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\EjemploServicios.war has finished in 6,203 ms
+10-Dec-2019 18:25:21.920 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war
+10-Dec-2019 18:25:21.973 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war has finished in 52 ms
+10-Dec-2019 18:25:21.976 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\docs
+10-Dec-2019 18:25:22.089 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\docs has finished in 110 ms
+10-Dec-2019 18:25:22.093 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\examples
+10-Dec-2019 18:25:23.332 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\examples has finished in 1,238 ms
+10-Dec-2019 18:25:23.336 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\host-manager
+10-Dec-2019 18:25:23.436 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\host-manager has finished in 99 ms
+10-Dec-2019 18:25:23.436 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\manager
+10-Dec-2019 18:25:23.508 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\manager has finished in 72 ms
+10-Dec-2019 18:25:23.509 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\ROOT
+10-Dec-2019 18:25:23.563 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\ROOT has finished in 54 ms
+10-Dec-2019 18:25:23.571 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+10-Dec-2019 18:25:23.586 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+10-Dec-2019 18:25:23.590 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 7985 ms
+10-Dec-2019 18:29:56.672 INFO [http-nio-8080-exec-2] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/Sensor] has started
+10-Dec-2019 18:29:56.740 INFO [http-nio-8080-exec-2] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/Sensor] is completed
+10-Dec-2019 18:29:58.468 INFO [http-nio-8080-exec-1] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/Sensor] has started
+10-Dec-2019 18:29:58.507 INFO [http-nio-8080-exec-1] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/Sensor] is completed
+10-Dec-2019 18:29:59.332 INFO [http-nio-8080-exec-6] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/Sensor] has started
+10-Dec-2019 18:29:59.372 INFO [http-nio-8080-exec-6] org.apache.catalina.core.StandardContext.reload Reloading Context with name [/Sensor] is completed
+10-Dec-2019 18:30:49.400 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+10-Dec-2019 18:30:49.401 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:30:49.460 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:30:49.512 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+10-Dec-2019 18:30:49.644 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:30:49.649 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:30:49.651 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:30:49.652 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:31:03.702 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/9.0.0.M9
+10-Dec-2019 18:31:03.705 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 4 2016 18:22:47 UTC
+10-Dec-2019 18:31:03.705 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         9.0.0.0
+10-Dec-2019 18:31:03.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+10-Dec-2019 18:31:03.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+10-Dec-2019 18:31:03.706 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+10-Dec-2019 18:31:03.707 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jre1.8.0_212
+10-Dec-2019 18:31:03.707 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_212-b10
+10-Dec-2019 18:31:03.707 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+10-Dec-2019 18:31:03.709 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:31:03.710 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:31:03.710 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+10-Dec-2019 18:31:03.711 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\conf\logging.properties
+10-Dec-2019 18:31:03.711 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Dec-2019 18:31:03.711 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:31:03.711 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:31:03.712 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\temp
+10-Dec-2019 18:31:03.715 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jre1.8.0_212\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;%INTELDEV_REDIST%redist\intel64\compiler;%INTELDEV_REDIST%redist\ia32\compiler;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\Windows\EPS\programas;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2019.3.0\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Common Files\AspenTech Shared\;C:\Users\EPS\AppData\Local\Microsoft\WindowsApps;AspenTech\Aspen Hydraulics;C:\Program Files (x86)\Brackets\command;C:\Program Files\Csound6_x64\bin;C:\oracle\instantclient;C:\Users\EPS\AppData\Roaming\npm;C:\Program Files\Java\jre1.8.0_212\bin;C:\Program Files\Java\Java3D\1.5.1\bin;C:\Program Files\MATLAB\R2019a\bin;C:\Program Files\MySQL\mysql-8.0.11\bin;C:\Program Files (x86)\nodejs;C:\Python27\;C:\Python27\Scripts;C:\Users\EPS\AppData\Local\Microsoft\WindowsApps;AspenTech\Aspen Hydraulics;.
+10-Dec-2019 18:31:04.055 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:31:04.453 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+10-Dec-2019 18:31:04.459 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:31:04.468 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+10-Dec-2019 18:31:04.469 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1559 ms
+10-Dec-2019 18:31:04.535 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+10-Dec-2019 18:31:04.535 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/9.0.0.M9
+10-Dec-2019 18:31:04.585 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\EjemploServicios.war
+10-Dec-2019 18:31:08.488 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+10-Dec-2019 18:31:11.486 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\EjemploServicios.war has finished in 6,900 ms
+10-Dec-2019 18:31:11.493 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war
+10-Dec-2019 18:31:11.651 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war has finished in 158 ms
+10-Dec-2019 18:31:11.690 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\docs
+10-Dec-2019 18:31:11.863 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\docs has finished in 173 ms
+10-Dec-2019 18:31:11.898 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\examples
+10-Dec-2019 18:31:13.137 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\examples has finished in 1,239 ms
+10-Dec-2019 18:31:13.138 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\host-manager
+10-Dec-2019 18:31:13.235 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\host-manager has finished in 97 ms
+10-Dec-2019 18:31:13.236 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\manager
+10-Dec-2019 18:31:13.381 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\manager has finished in 145 ms
+10-Dec-2019 18:31:13.382 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\ROOT
+10-Dec-2019 18:31:13.436 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\ROOT has finished in 55 ms
+10-Dec-2019 18:31:13.452 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+10-Dec-2019 18:31:13.471 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+10-Dec-2019 18:31:13.480 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 9009 ms
+10-Dec-2019 18:32:35.803 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+10-Dec-2019 18:32:35.805 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:32:35.862 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:32:35.913 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+10-Dec-2019 18:32:36.049 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:32:36.054 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:32:36.056 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:32:36.058 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:33:09.071 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server version:        Apache Tomcat/9.0.0.M9
+10-Dec-2019 18:33:09.074 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server built:          Jul 4 2016 18:22:47 UTC
+10-Dec-2019 18:33:09.074 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Server number:         9.0.0.0
+10-Dec-2019 18:33:09.074 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Name:               Windows 10
+10-Dec-2019 18:33:09.074 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log OS Version:            10.0
+10-Dec-2019 18:33:09.075 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Architecture:          amd64
+10-Dec-2019 18:33:09.075 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Java Home:             C:\Program Files\Java\jre1.8.0_212
+10-Dec-2019 18:33:09.075 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Version:           1.8.0_212-b10
+10-Dec-2019 18:33:09.075 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log JVM Vendor:            Oracle Corporation
+10-Dec-2019 18:33:09.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_BASE:         C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:33:09.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log CATALINA_HOME:         C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:33:09.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djdk.tls.ephemeralDHKeySize=2048
+10-Dec-2019 18:33:09.076 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.config.file=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\conf\logging.properties
+10-Dec-2019 18:33:09.077 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.util.logging.manager=org.apache.juli.ClassLoaderLogManager
+10-Dec-2019 18:33:09.077 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.base=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:33:09.078 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Dcatalina.home=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9
+10-Dec-2019 18:33:09.080 INFO [main] org.apache.catalina.startup.VersionLoggerListener.log Command line argument: -Djava.io.tmpdir=C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\temp
+10-Dec-2019 18:33:09.084 INFO [main] org.apache.catalina.core.AprLifecycleListener.lifecycleEvent The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: C:\Program Files\Java\jre1.8.0_212\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;%INTELDEV_REDIST%redist\intel64\compiler;%INTELDEV_REDIST%redist\ia32\compiler;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.1\libnvvp;C:\Program Files\Microsoft MPI\Bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\AMD\ATI.ACE\Core-Static;C:\Windows\EPS\programas;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\NVIDIA Corporation\Nsight Compute 2019.3.0\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\Common Files\AspenTech Shared\;C:\Users\EPS\AppData\Local\Microsoft\WindowsApps;AspenTech\Aspen Hydraulics;C:\Program Files (x86)\Brackets\command;C:\Program Files\Csound6_x64\bin;C:\oracle\instantclient;C:\Users\EPS\AppData\Roaming\npm;C:\Program Files\Java\jre1.8.0_212\bin;C:\Program Files\Java\Java3D\1.5.1\bin;C:\Program Files\MATLAB\R2019a\bin;C:\Program Files\MySQL\mysql-8.0.11\bin;C:\Program Files (x86)\nodejs;C:\Python27\;C:\Python27\Scripts;C:\Users\EPS\AppData\Local\Microsoft\WindowsApps;AspenTech\Aspen Hydraulics;.
+10-Dec-2019 18:33:09.410 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:33:09.791 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+10-Dec-2019 18:33:09.798 INFO [main] org.apache.coyote.AbstractProtocol.init Initializing ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:33:09.802 INFO [main] org.apache.tomcat.util.net.NioSelectorPool.getSharedSelector Using a shared selector for servlet write/read
+10-Dec-2019 18:33:09.804 INFO [main] org.apache.catalina.startup.Catalina.load Initialization processed in 1441 ms
+10-Dec-2019 18:33:09.868 INFO [main] org.apache.catalina.core.StandardService.startInternal Starting service Catalina
+10-Dec-2019 18:33:09.868 INFO [main] org.apache.catalina.core.StandardEngine.startInternal Starting Servlet Engine: Apache Tomcat/9.0.0.M9
+10-Dec-2019 18:33:09.918 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\EjemploServicios.war
+10-Dec-2019 18:33:13.673 INFO [localhost-startStop-1] org.apache.jasper.servlet.TldScanner.scanJars At least one JAR was scanned for TLDs yet contained no TLDs. Enable debug logging for this logger for a complete list of JARs that were scanned but no TLDs were found in them. Skipping unneeded JARs during scanning can improve startup time and JSP compilation time.
+10-Dec-2019 18:33:16.900 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\EjemploServicios.war has finished in 6,981 ms
+10-Dec-2019 18:33:16.906 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deploying web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war
+10-Dec-2019 18:33:17.014 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployWAR Deployment of web application archive C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\Sensor.war has finished in 108 ms
+10-Dec-2019 18:33:17.024 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\docs
+10-Dec-2019 18:33:17.119 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\docs has finished in 96 ms
+10-Dec-2019 18:33:17.123 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\examples
+10-Dec-2019 18:33:18.332 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\examples has finished in 1,209 ms
+10-Dec-2019 18:33:18.333 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\host-manager
+10-Dec-2019 18:33:18.426 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\host-manager has finished in 93 ms
+10-Dec-2019 18:33:18.427 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\manager
+10-Dec-2019 18:33:18.561 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\manager has finished in 134 ms
+10-Dec-2019 18:33:18.562 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deploying web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\ROOT
+10-Dec-2019 18:33:18.629 INFO [localhost-startStop-1] org.apache.catalina.startup.HostConfig.deployDirectory Deployment of web application directory C:\Users\EPS\Desktop\SD\seguridad\apache-tomcat-9.0.0.M9\webapps\ROOT has finished in 67 ms
+10-Dec-2019 18:33:18.642 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [http-nio-8080]
+10-Dec-2019 18:33:18.659 INFO [main] org.apache.coyote.AbstractProtocol.start Starting ProtocolHandler [ajp-nio-8009]
+10-Dec-2019 18:33:18.665 INFO [main] org.apache.catalina.startup.Catalina.start Server startup in 8861 ms
+10-Dec-2019 18:34:06.602 INFO [main] org.apache.catalina.core.StandardServer.await A valid shutdown command was received via the shutdown port. Stopping the Server instance.
+10-Dec-2019 18:34:06.603 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:34:06.661 INFO [main] org.apache.coyote.AbstractProtocol.pause Pausing ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:34:06.664 INFO [main] org.apache.catalina.core.StandardService.stopInternal Stopping service Catalina
+10-Dec-2019 18:34:06.870 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:34:06.874 INFO [main] org.apache.coyote.AbstractProtocol.stop Stopping ProtocolHandler ["ajp-nio-8009"]
+10-Dec-2019 18:34:06.877 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["http-nio-8080"]
+10-Dec-2019 18:34:06.880 INFO [main] org.apache.coyote.AbstractProtocol.destroy Destroying ProtocolHandler ["ajp-nio-8009"]

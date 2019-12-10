@@ -32,15 +32,5 @@ namespace clienteNet.Properties {
                 return ((string)(this["clienteNet_localhost_Sensor"]));
             }
         }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:8080/Sensor/services/Sensor.SensorHttpSoap11Endpoint/")]
-        public string clienteNet_localhost1_Sensor {
-            get {
-                return ((string)(this["clienteNet_localhost1_Sensor"]));
-            }
-        }
     }
 }
