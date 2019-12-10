@@ -62,7 +62,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web References\localhost1\Reference.cs">
+    <Compile Include="Web References\localhost\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.map</DependentUpon>
@@ -91,11 +91,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Web References\localhost1\Reference.map">
+    <None Include="Web References\localhost\Reference.map">
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\localhost1\Sensor.wsdl" />
+    <None Include="Web References\localhost\Sensor.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -113,14 +113,14 @@
   <ItemGroup>
     <WebReferenceUrl Include="http://localhost:8080/Sensor/services/Sensor%3fwsdl">
       <UrlBehavior>Dynamic</UrlBehavior>
-      <RelPath>Web References\localhost1\</RelPath>
+      <RelPath>Web References\localhost\</RelPath>
       <UpdateFromURL>http://localhost:8080/Sensor/services/Sensor%3fwsdl</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
       </CachedDynamicPropName>
       <CachedAppSettingsObjectName>Settings</CachedAppSettingsObjectName>
-      <CachedSettingsPropName>clienteNet_localhost1_Sensor</CachedSettingsPropName>
+      <CachedSettingsPropName>clienteNet_localhost_Sensor</CachedSettingsPropName>
     </WebReferenceUrl>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

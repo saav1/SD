@@ -26,20 +26,18 @@ namespace clienteNet.localhost {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    [System.Web.Services.WebServiceBindingAttribute(Name="SensorSoap11Binding", Namespace="http://sonda")]
+    [System.Web.Services.WebServiceBindingAttribute(Name="SensorSoap11Binding", Namespace="http://main")]
     public partial class Sensor : System.Web.Services.Protocols.SoapHttpClientProtocol {
         
         private System.Threading.SendOrPostCallback getVolumenOperationCompleted;
         
         private System.Threading.SendOrPostCallback getNombreOperationCompleted;
         
-        private System.Threading.SendOrPostCallback toStringOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback setLedOperationCompleted;
+        private System.Threading.SendOrPostCallback getFechaOperationCompleted;
         
         private System.Threading.SendOrPostCallback getLedOperationCompleted;
         
-        private System.Threading.SendOrPostCallback getFechaOperationCompleted;
+        private System.Threading.SendOrPostCallback leerSensorOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -86,19 +84,16 @@ namespace clienteNet.localhost {
         public event getNombreCompletedEventHandler getNombreCompleted;
         
         /// <remarks/>
-        public event toStringCompletedEventHandler toStringCompleted;
-        
-        /// <remarks/>
-        public event setLedCompletedEventHandler setLedCompleted;
+        public event getFechaCompletedEventHandler getFechaCompleted;
         
         /// <remarks/>
         public event getLedCompletedEventHandler getLedCompleted;
         
         /// <remarks/>
-        public event getFechaCompletedEventHandler getFechaCompleted;
+        public event leerSensorCompletedEventHandler leerSensorCompleted;
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getVolumen", RequestNamespace="http://sonda", ResponseNamespace="http://sonda", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getVolumen", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public int getVolumen() {
             object[] results = this.Invoke("getVolumen", new object[0]);
@@ -126,7 +121,7 @@ namespace clienteNet.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getNombre", RequestNamespace="http://sonda", ResponseNamespace="http://sonda", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getNombre", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return", IsNullable=true)]
         public string getNombre() {
             object[] results = this.Invoke("getNombre", new object[0]);
@@ -154,63 +149,35 @@ namespace clienteNet.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:toString", RequestNamespace="http://sonda", ResponseNamespace="http://sonda", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getFecha", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return", IsNullable=true)]
-        public string toString() {
-            object[] results = this.Invoke("toString", new object[0]);
+        public string getFecha() {
+            object[] results = this.Invoke("getFecha", new object[0]);
             return ((string)(results[0]));
         }
         
         /// <remarks/>
-        public void toStringAsync() {
-            this.toStringAsync(null);
+        public void getFechaAsync() {
+            this.getFechaAsync(null);
         }
         
         /// <remarks/>
-        public void toStringAsync(object userState) {
-            if ((this.toStringOperationCompleted == null)) {
-                this.toStringOperationCompleted = new System.Threading.SendOrPostCallback(this.OntoStringOperationCompleted);
+        public void getFechaAsync(object userState) {
+            if ((this.getFechaOperationCompleted == null)) {
+                this.getFechaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetFechaOperationCompleted);
             }
-            this.InvokeAsync("toString", new object[0], this.toStringOperationCompleted, userState);
+            this.InvokeAsync("getFecha", new object[0], this.getFechaOperationCompleted, userState);
         }
         
-        private void OntoStringOperationCompleted(object arg) {
-            if ((this.toStringCompleted != null)) {
+        private void OngetFechaOperationCompleted(object arg) {
+            if ((this.getFechaCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.toStringCompleted(this, new toStringCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.getFechaCompleted(this, new getFechaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:setLed", RequestNamespace="http://sonda", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void setLed(int led) {
-            this.Invoke("setLed", new object[] {
-                        led});
-        }
-        
-        /// <remarks/>
-        public void setLedAsync(int led) {
-            this.setLedAsync(led, null);
-        }
-        
-        /// <remarks/>
-        public void setLedAsync(int led, object userState) {
-            if ((this.setLedOperationCompleted == null)) {
-                this.setLedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetLedOperationCompleted);
-            }
-            this.InvokeAsync("setLed", new object[] {
-                        led}, this.setLedOperationCompleted, userState);
-        }
-        
-        private void OnsetLedOperationCompleted(object arg) {
-            if ((this.setLedCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.setLedCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getLed", RequestNamespace="http://sonda", ResponseNamespace="http://sonda", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getLed", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
         [return: System.Xml.Serialization.XmlElementAttribute("return")]
         public int getLed() {
             object[] results = this.Invoke("getLed", new object[0]);
@@ -238,30 +205,28 @@ namespace clienteNet.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getFecha", RequestNamespace="http://sonda", ResponseNamespace="http://sonda", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        [return: System.Xml.Serialization.XmlElementAttribute("return", IsNullable=true)]
-        public string getFecha() {
-            object[] results = this.Invoke("getFecha", new object[0]);
-            return ((string)(results[0]));
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:leerSensor", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void leerSensor() {
+            this.Invoke("leerSensor", new object[0]);
         }
         
         /// <remarks/>
-        public void getFechaAsync() {
-            this.getFechaAsync(null);
+        public void leerSensorAsync() {
+            this.leerSensorAsync(null);
         }
         
         /// <remarks/>
-        public void getFechaAsync(object userState) {
-            if ((this.getFechaOperationCompleted == null)) {
-                this.getFechaOperationCompleted = new System.Threading.SendOrPostCallback(this.OngetFechaOperationCompleted);
+        public void leerSensorAsync(object userState) {
+            if ((this.leerSensorOperationCompleted == null)) {
+                this.leerSensorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnleerSensorOperationCompleted);
             }
-            this.InvokeAsync("getFecha", new object[0], this.getFechaOperationCompleted, userState);
+            this.InvokeAsync("leerSensor", new object[0], this.leerSensorOperationCompleted, userState);
         }
         
-        private void OngetFechaOperationCompleted(object arg) {
-            if ((this.getFechaCompleted != null)) {
+        private void OnleerSensorOperationCompleted(object arg) {
+            if ((this.leerSensorCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.getFechaCompleted(this, new getFechaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.leerSensorCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -338,17 +303,17 @@ namespace clienteNet.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void toStringCompletedEventHandler(object sender, toStringCompletedEventArgs e);
+    public delegate void getFechaCompletedEventHandler(object sender, getFechaCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class toStringCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+    public partial class getFechaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
         
         private object[] results;
         
-        internal toStringCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+        internal getFechaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }
@@ -361,10 +326,6 @@ namespace clienteNet.localhost {
             }
         }
     }
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void setLedCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
@@ -394,29 +355,7 @@ namespace clienteNet.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void getFechaCompletedEventHandler(object sender, getFechaCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.ComponentModel.DesignerCategoryAttribute("code")]
-    public partial class getFechaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
-        
-        private object[] results;
-        
-        internal getFechaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
-                base(exception, cancelled, userState) {
-            this.results = results;
-        }
-        
-        /// <remarks/>
-        public string Result {
-            get {
-                this.RaiseExceptionIfNecessary();
-                return ((string)(this.results[0]));
-            }
-        }
-    }
+    public delegate void leerSensorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

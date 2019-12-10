@@ -17,18 +17,7 @@ namespace clienteNet
             InitializeComponent();
         }
 
-        private void bAddSonda(object sender, EventArgs e)
-        {
 
-            localhost1.Sensor sensor = new localhost1.Sensor();
-
-
-            sensor.readSensor("C://Users//EPS//Desktop//SD//clienteNet//Sensor1.txt");
-
-            string s = "Sensor " + sensor.getFecha() + " " + sensor.getLed(); 
-
-            descAddSonda.Text = s;
-        }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -70,11 +59,16 @@ namespace clienteNet
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            localhost.Sensor sensor = new localhost.Sensor();
 
+            sensor.Url = "http://localhost:8080/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
 
-           
+            sensor.leerSensor();
 
-            descAddSonda.Text = s;
+            string s = sensor.getFecha();
+
+            descAddSonda.Text = "Sensor " + sensor.getFecha();
+
         }
     }
 }
