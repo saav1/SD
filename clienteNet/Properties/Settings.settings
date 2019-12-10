@@ -1,7 +1,12 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="clienteNet.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="clienteNet_localhost_Sensor" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/Sensor/services/Sensor.SensorHttpSoap11Endpoint/</Value>
+    </Setting>
+    <Setting Name="clienteNet_localhost1_Sensor" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://localhost:8080/Sensor/services/Sensor.SensorHttpSoap11Endpoint/</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

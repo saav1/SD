@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.bAddSonda = new System.Windows.Forms.Button();
             this.tbAddSonda = new System.Windows.Forms.TextBox();
             this.cbSondasConsultar = new System.Windows.Forms.ComboBox();
             this.cbAtributos = new System.Windows.Forms.ComboBox();
@@ -42,17 +41,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // bAddSonda
-            // 
-            this.bAddSonda.Location = new System.Drawing.Point(327, 40);
-            this.bAddSonda.Name = "bAddSonda";
-            this.bAddSonda.Size = new System.Drawing.Size(88, 34);
-            this.bAddSonda.TabIndex = 0;
-            this.bAddSonda.Text = "Añadir Sonda";
-            this.bAddSonda.UseVisualStyleBackColor = true;
-            this.bAddSonda.Click += new System.EventHandler(this.Button1_Click);
             // 
             // tbAddSonda
             // 
@@ -166,11 +156,22 @@
             this.label3.TabIndex = 15;
             this.label3.Text = "Modificar valor LED";
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(327, 54);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 34);
+            this.button1.TabIndex = 16;
+            this.button1.Text = "Añadir Sonda";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(706, 504);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -184,7 +185,6 @@
             this.Controls.Add(this.cbAtributos);
             this.Controls.Add(this.cbSondasConsultar);
             this.Controls.Add(this.tbAddSonda);
-            this.Controls.Add(this.bAddSonda);
             this.Name = "Form1";
             this.Text = "Aplicación.NET";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -195,7 +195,6 @@
 
         #endregion
 
-        private System.Windows.Forms.Button bAddSonda;
         private System.Windows.Forms.TextBox tbAddSonda;
         private System.Windows.Forms.ComboBox cbSondasConsultar;
         private System.Windows.Forms.ComboBox cbAtributos;
@@ -209,6 +208,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button button1;
     }
 }
 
