@@ -34,9 +34,7 @@ namespace clienteNet
             }
 
             if (exist == false) listaSensores.Add(sensor);
-
-
-                escribirSondas();
+            escribirSondas();
 
         }
 
