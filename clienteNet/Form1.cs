@@ -63,6 +63,53 @@ namespace clienteNet
             cbAtributos.Items.Add("Led");
         }
 
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            string nombreSensor = cbSondasModificar.Text;
+            string newValue = tbValor.Text;
+
+            for (int i = 0; i < listaSensores.Count; i++)
+            {
+                if (nombreSensor == listaSensores[i].getNombre())
+                {
+                    //int numVal = Int32.Parse("-105");
+                    //listaSensores[i].setLed(int.TryParse(newValue));
+
+                }
+            }
+
+
+        }
+
+
+        private void BConsultar_Click(object sender, EventArgs e)
+        {
+            string nombreSensor = cbSondasConsultar.Text;
+            string valor = cbAtributos.Text;
+
+            for (int i = 0; i < listaSensores.Count; i++)
+            {
+                if (nombreSensor == listaSensores[i].getNombre())
+                {
+                    switch (valor)
+                    {
+                        case "Volumen":
+                            descConsultar.Text = listaSensores[i].getVolumen().ToString();
+                            break;
+                        case "Fecha":
+                            descConsultar.Text = listaSensores[i].getFecha();
+                            break;
+                        case "Led":
+                            descConsultar.Text = listaSensores[i].getLed().ToString();
+                            break;
+                    }
+                }
+            }
+
+        }
+
+
         private void Form1_Load(object sender, EventArgs e)
         {
             
@@ -90,40 +137,11 @@ namespace clienteNet
 
 
 
-        private void Button3_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void Label1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void BConsultar_Click(object sender, EventArgs e)
-        {
-            string nombreSensor = cbSondasConsultar.Text;
-            string valor = cbAtributos.Text;
-
-            for (int i = 0; i < listaSensores.Count; i++)
-            {
-                if (nombreSensor == listaSensores[i].getNombre())
-                {
-                    switch (valor)
-                    {
-                        case "Volumen":
-                            descConsultar.Text = listaSensores[i].getVolumen().ToString();
-                            break;
-                        case "Fecha":
-                            descConsultar.Text = listaSensores[i].getFecha();
-                            break;
-                        case "Led":
-                            descConsultar.Text = listaSensores[i].getLed().ToString();
-                            break;
-                    }
-                }
-            }
-
-        }
     }
 }
