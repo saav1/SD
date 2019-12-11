@@ -118,6 +118,7 @@
             this.bConsultar.TabIndex = 11;
             this.bConsultar.Text = "Consultar";
             this.bConsultar.UseVisualStyleBackColor = true;
+            this.bConsultar.Click += new System.EventHandler(this.BConsultar_Click);
             // 
             // bEstablecer
             // 

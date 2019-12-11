@@ -102,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Database.txt" />
-    <Content Include="Sensor1.txt" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

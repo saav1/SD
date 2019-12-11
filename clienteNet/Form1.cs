@@ -24,6 +24,7 @@ namespace clienteNet
             localhost.Sensor sensor = new localhost.Sensor();
             sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
 
+
             bool exist = false;
             for (int i = 0; i < listaSensores.Count; i++)
             {
@@ -33,7 +34,11 @@ namespace clienteNet
                 }
             }
 
-            if (exist == false) listaSensores.Add(sensor);
+
+            if (exist == false) {
+                sensor.setNombre("Sensor " + ip_port);
+                listaSensores.Add(sensor);
+            }
             escribirSondas();
 
         }
@@ -48,7 +53,7 @@ namespace clienteNet
             descAddSonda.Text = "";
             for (int i = 0; i < listaSensores.Count; i++)
             {
-                descAddSonda.Text += "Sensor: " + listaSensores[i].getNombre() + "\r\n";
+                descAddSonda.Text += listaSensores[i].getNombre() + "\r\n";
                 cbSondasConsultar.Items.Add(listaSensores[i].getNombre());
                 cbSondasModificar.Items.Add(listaSensores[i].getNombre());
             }
@@ -95,6 +100,30 @@ namespace clienteNet
 
         }
 
+        private void BConsultar_Click(object sender, EventArgs e)
+        {
+            string nombreSensor = cbSondasConsultar.Text;
+            string valor = cbAtributos.Text;
 
+            for (int i = 0; i < listaSensores.Count; i++)
+            {
+                if (nombreSensor == listaSensores[i].getNombre())
+                {
+                    switch (valor)
+                    {
+                        case "Volumen":
+                            descConsultar.Text = listaSensores[i].getVolumen().ToString();
+                            break;
+                        case "Fecha":
+                            descConsultar.Text = listaSensores[i].getFecha();
+                            break;
+                        case "Led":
+                            descConsultar.Text = listaSensores[i].getLed().ToString();
+                            break;
+                    }
+                }
+            }
+
+        }
     }
 }

@@ -33,11 +33,15 @@ namespace clienteNet.localhost {
         
         private System.Threading.SendOrPostCallback getNombreOperationCompleted;
         
+        private System.Threading.SendOrPostCallback setNombreOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getFechaOperationCompleted;
         
         private System.Threading.SendOrPostCallback getLedOperationCompleted;
         
         private System.Threading.SendOrPostCallback CallSensorOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback readSondaOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -84,6 +88,9 @@ namespace clienteNet.localhost {
         public event getNombreCompletedEventHandler getNombreCompleted;
         
         /// <remarks/>
+        public event setNombreCompletedEventHandler setNombreCompleted;
+        
+        /// <remarks/>
         public event getFechaCompletedEventHandler getFechaCompleted;
         
         /// <remarks/>
@@ -91,6 +98,9 @@ namespace clienteNet.localhost {
         
         /// <remarks/>
         public event CallSensorCompletedEventHandler CallSensorCompleted;
+        
+        /// <remarks/>
+        public event readSondaCompletedEventHandler readSondaCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getVolumen", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -145,6 +155,34 @@ namespace clienteNet.localhost {
             if ((this.getNombreCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getNombreCompleted(this, new getNombreCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:setNombre", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void setNombre([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string nombre) {
+            this.Invoke("setNombre", new object[] {
+                        nombre});
+        }
+        
+        /// <remarks/>
+        public void setNombreAsync(string nombre) {
+            this.setNombreAsync(nombre, null);
+        }
+        
+        /// <remarks/>
+        public void setNombreAsync(string nombre, object userState) {
+            if ((this.setNombreOperationCompleted == null)) {
+                this.setNombreOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetNombreOperationCompleted);
+            }
+            this.InvokeAsync("setNombre", new object[] {
+                        nombre}, this.setNombreOperationCompleted, userState);
+        }
+        
+        private void OnsetNombreOperationCompleted(object arg) {
+            if ((this.setNombreCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.setNombreCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -231,6 +269,34 @@ namespace clienteNet.localhost {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:readSonda", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void readSonda([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string file) {
+            this.Invoke("readSonda", new object[] {
+                        file});
+        }
+        
+        /// <remarks/>
+        public void readSondaAsync(string file) {
+            this.readSondaAsync(file, null);
+        }
+        
+        /// <remarks/>
+        public void readSondaAsync(string file, object userState) {
+            if ((this.readSondaOperationCompleted == null)) {
+                this.readSondaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnreadSondaOperationCompleted);
+            }
+            this.InvokeAsync("readSonda", new object[] {
+                        file}, this.readSondaOperationCompleted, userState);
+        }
+        
+        private void OnreadSondaOperationCompleted(object arg) {
+            if ((this.readSondaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.readSondaCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -303,6 +369,10 @@ namespace clienteNet.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void setNombreCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void getFechaCompletedEventHandler(object sender, getFechaCompletedEventArgs e);
     
     /// <remarks/>
@@ -356,6 +426,10 @@ namespace clienteNet.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void CallSensorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void readSondaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

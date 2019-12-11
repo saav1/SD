@@ -5,16 +5,9 @@
 	</wsdl:documentation>
   <wsdl:types>
     <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://main">
-      <xs:element name="getVolumen">
+      <xs:element name="Sensor">
         <xs:complexType>
           <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getVolumenResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="return" type="xs:int" />
-          </xs:sequence>
         </xs:complexType>
       </xs:element>
       <xs:element name="getNombre">
@@ -26,6 +19,25 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="setNombre">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVolumen">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVolumenResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:int" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -41,11 +53,6 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="Sensor">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
       <xs:element name="getLed">
         <xs:complexType>
           <xs:sequence />
@@ -55,6 +62,13 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element name="return" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="readSonda">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="file" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -72,6 +86,9 @@
   <wsdl:message name="getNombreResponse">
     <wsdl:part name="parameters" element="ns:getNombreResponse" />
   </wsdl:message>
+  <wsdl:message name="setNombreRequest">
+    <wsdl:part name="parameters" element="ns:setNombre" />
+  </wsdl:message>
   <wsdl:message name="getFechaRequest">
     <wsdl:part name="parameters" element="ns:getFecha" />
   </wsdl:message>
@@ -87,6 +104,9 @@
   <wsdl:message name="SensorRequest">
     <wsdl:part name="parameters" element="ns:Sensor" />
   </wsdl:message>
+  <wsdl:message name="readSondaRequest">
+    <wsdl:part name="parameters" element="ns:readSonda" />
+  </wsdl:message>
   <wsdl:portType name="SensorPortType">
     <wsdl:operation name="getVolumen">
       <wsdl:input wsaw:Action="urn:getVolumen" message="ns:getVolumenRequest" />
@@ -95,6 +115,9 @@
     <wsdl:operation name="getNombre">
       <wsdl:input wsaw:Action="urn:getNombre" message="ns:getNombreRequest" />
       <wsdl:output wsaw:Action="urn:getNombreResponse" message="ns:getNombreResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="setNombre">
+      <wsdl:input wsaw:Action="urn:setNombre" message="ns:setNombreRequest" />
     </wsdl:operation>
     <wsdl:operation name="getFecha">
       <wsdl:input wsaw:Action="urn:getFecha" message="ns:getFechaRequest" />
@@ -106,6 +129,9 @@
     </wsdl:operation>
     <wsdl:operation name="Sensor">
       <wsdl:input wsaw:Action="urn:Sensor" message="ns:SensorRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="readSonda">
+      <wsdl:input wsaw:Action="urn:readSonda" message="ns:readSondaRequest" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SensorSoap11Binding" type="ns:SensorPortType">
@@ -127,6 +153,12 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setNombre">
+      <soap:operation soapAction="urn:setNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="getFecha">
       <soap:operation soapAction="urn:getFecha" style="document" />
@@ -152,6 +184,12 @@
         <soap:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="readSonda">
+      <soap:operation soapAction="urn:readSonda" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SensorSoap12Binding" type="ns:SensorPortType">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -172,6 +210,12 @@
       <wsdl:output>
         <soap12:body use="literal" />
       </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setNombre">
+      <soap12:operation soapAction="urn:setNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
     </wsdl:operation>
     <wsdl:operation name="getFecha">
       <soap12:operation soapAction="urn:getFecha" style="document" />
@@ -197,6 +241,12 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
+    <wsdl:operation name="readSonda">
+      <soap12:operation soapAction="urn:readSonda" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="SensorHttpBinding" type="ns:SensorPortType">
     <http:binding verb="POST" />
@@ -218,6 +268,12 @@
         <mime:content part="parameters" type="application/xml" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="setNombre">
+      <http:operation location="setNombre" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
     <wsdl:operation name="getFecha">
       <http:operation location="getFecha" />
       <wsdl:input>
@@ -238,6 +294,12 @@
     </wsdl:operation>
     <wsdl:operation name="Sensor">
       <http:operation location="Sensor" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="readSonda">
+      <http:operation location="readSonda" />
       <wsdl:input>
         <mime:content part="parameters" type="application/xml" />
       </wsdl:input>

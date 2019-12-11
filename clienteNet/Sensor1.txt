@@ -1,3 +1,0 @@
-﻿Volumen=20
-UltimaFecha=11/11/11
-Led=1
