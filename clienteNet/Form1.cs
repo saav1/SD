@@ -16,35 +16,43 @@ namespace clienteNet
             InitializeComponent();
         }
 
-
         List<localhost.Sensor> listaSensores = new List<localhost.Sensor>();
-
 
         private void Button1_Click(object sender, EventArgs e)
         {
-
             String ip_port = tbAddSonda.Text;
-
             localhost.Sensor sensor = new localhost.Sensor();
-
             sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
 
-            listaSensores.Add(sensor);
+            bool exist = false;
+            for (int i = 0; i < listaSensores.Count; i++)
+            {
+                if (sensor.Url == listaSensores[i].Url)
+                {
+                    exist = true;
+                }
+            }
 
-            escribirSondas();
+            if (exist == false) listaSensores.Add(sensor);
+
+
+                escribirSondas();
 
         }
 
         private void escribirSondas() {
 
             cbAtributos.Items.Clear();
-
+            descAddSonda.Clear();
+            cbSondasConsultar.Items.Clear();
+            cbSondasModificar.Items.Clear();
 
             descAddSonda.Text = "";
             for (int i = 0; i < listaSensores.Count; i++)
             {
-                descAddSonda.Text = "Sensor: " + listaSensores[i].getNombre() + "\r\n";
+                descAddSonda.Text += "Sensor: " + listaSensores[i].getNombre() + "\r\n";
                 cbSondasConsultar.Items.Add(listaSensores[i].getNombre());
+                cbSondasModificar.Items.Add(listaSensores[i].getNombre());
             }
 
             cbAtributos.Items.Add("Volumen");
