@@ -13,28 +13,42 @@ namespace clienteNet
     public partial class Login : Form
     {
 
+        string user = "a";
+        string pass = "a";
+
 
         public Login()
         {
             InitializeComponent();
             tbPassword.UseSystemPasswordChar = true;
+
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            string user = tbUser.Text;
-            string password = tbPassword.Text;
+            if (user == tbUser.Text && pass == tbPassword.Text)
+            {
+                this.Hide();
+                Form1 f1 = new Form1();
+                f1.Show();
+            }
+            else {
+                Console.WriteLine(user + "/" + tbUser.Text);
+                Console.WriteLine(pass + "/" + tbPassword.Text);
+            }
 
 
-            Console.Write(user + " / "+  password);
-
-            this.Hide();
-            Form1 f1 = new Form1();
-            f1.Show();
         }
 
         public bool validar(string user, string password) {
             return true;
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\EPS\Desktop\SD\clienteNet\users.txt");
+            user = lines[0];
+            pass = lines[1];
         }
     }
 }

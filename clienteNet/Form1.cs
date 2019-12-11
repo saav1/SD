@@ -24,7 +24,6 @@ namespace clienteNet
             localhost.Sensor sensor = new localhost.Sensor();
             sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
 
-
             bool exist = false;
             for (int i = 0; i < listaSensores.Count; i++)
             {
@@ -34,8 +33,8 @@ namespace clienteNet
                 }
             }
 
-
             if (exist == false) {
+                sensor.readSonda("Sensor.txt");
                 sensor.setNombre("Sensor " + ip_port);
                 listaSensores.Add(sensor);
             }
@@ -73,9 +72,7 @@ namespace clienteNet
             {
                 if (nombreSensor == listaSensores[i].getNombre())
                 {
-                    //int numVal = Int32.Parse("-105");
-                    //listaSensores[i].setLed(int.TryParse(newValue));
-
+                    listaSensores[i].setLed(int.Parse(newValue));
                 }
             }
 
@@ -92,6 +89,7 @@ namespace clienteNet
             {
                 if (nombreSensor == listaSensores[i].getNombre())
                 {
+
                     switch (valor)
                     {
                         case "Volumen":
