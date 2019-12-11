@@ -5,6 +5,18 @@
 	</wsdl:documentation>
   <wsdl:types>
     <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://main">
+      <xs:element name="getVolumen">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getVolumenResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="getNombre">
         <xs:complexType>
           <xs:sequence />
@@ -29,29 +41,17 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="Sensor">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
       <xs:element name="getLed">
         <xs:complexType>
           <xs:sequence />
         </xs:complexType>
       </xs:element>
       <xs:element name="getLedResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="return" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="leerSensor">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getVolumen">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getVolumenResponse">
         <xs:complexType>
           <xs:sequence>
             <xs:element name="return" type="xs:int" />
@@ -84,8 +84,8 @@
   <wsdl:message name="getLedResponse">
     <wsdl:part name="parameters" element="ns:getLedResponse" />
   </wsdl:message>
-  <wsdl:message name="leerSensorRequest">
-    <wsdl:part name="parameters" element="ns:leerSensor" />
+  <wsdl:message name="SensorRequest">
+    <wsdl:part name="parameters" element="ns:Sensor" />
   </wsdl:message>
   <wsdl:portType name="SensorPortType">
     <wsdl:operation name="getVolumen">
@@ -104,8 +104,8 @@
       <wsdl:input wsaw:Action="urn:getLed" message="ns:getLedRequest" />
       <wsdl:output wsaw:Action="urn:getLedResponse" message="ns:getLedResponse" />
     </wsdl:operation>
-    <wsdl:operation name="leerSensor">
-      <wsdl:input wsaw:Action="urn:leerSensor" message="ns:leerSensorRequest" />
+    <wsdl:operation name="Sensor">
+      <wsdl:input wsaw:Action="urn:Sensor" message="ns:SensorRequest" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="SensorSoap11Binding" type="ns:SensorPortType">
@@ -146,8 +146,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="leerSensor">
-      <soap:operation soapAction="urn:leerSensor" style="document" />
+    <wsdl:operation name="Sensor">
+      <soap:operation soapAction="urn:Sensor" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -191,8 +191,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="leerSensor">
-      <soap12:operation soapAction="urn:leerSensor" style="document" />
+    <wsdl:operation name="Sensor">
+      <soap12:operation soapAction="urn:Sensor" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -236,8 +236,8 @@
         <mime:content part="parameters" type="application/xml" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="leerSensor">
-      <http:operation location="leerSensor" />
+    <wsdl:operation name="Sensor">
+      <http:operation location="Sensor" />
       <wsdl:input>
         <mime:content part="parameters" type="application/xml" />
       </wsdl:input>

@@ -37,7 +37,7 @@ namespace clienteNet.localhost {
         
         private System.Threading.SendOrPostCallback getLedOperationCompleted;
         
-        private System.Threading.SendOrPostCallback leerSensorOperationCompleted;
+        private System.Threading.SendOrPostCallback CallSensorOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -90,7 +90,7 @@ namespace clienteNet.localhost {
         public event getLedCompletedEventHandler getLedCompleted;
         
         /// <remarks/>
-        public event leerSensorCompletedEventHandler leerSensorCompleted;
+        public event CallSensorCompletedEventHandler CallSensorCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getVolumen", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -205,28 +205,28 @@ namespace clienteNet.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:leerSensor", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void leerSensor() {
-            this.Invoke("leerSensor", new object[0]);
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:Sensor", RequestElementName="Sensor", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void CallSensor() {
+            this.Invoke("CallSensor", new object[0]);
         }
         
         /// <remarks/>
-        public void leerSensorAsync() {
-            this.leerSensorAsync(null);
+        public void CallSensorAsync() {
+            this.CallSensorAsync(null);
         }
         
         /// <remarks/>
-        public void leerSensorAsync(object userState) {
-            if ((this.leerSensorOperationCompleted == null)) {
-                this.leerSensorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnleerSensorOperationCompleted);
+        public void CallSensorAsync(object userState) {
+            if ((this.CallSensorOperationCompleted == null)) {
+                this.CallSensorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCallSensorOperationCompleted);
             }
-            this.InvokeAsync("leerSensor", new object[0], this.leerSensorOperationCompleted, userState);
+            this.InvokeAsync("CallSensor", new object[0], this.CallSensorOperationCompleted, userState);
         }
         
-        private void OnleerSensorOperationCompleted(object arg) {
-            if ((this.leerSensorCompleted != null)) {
+        private void OnCallSensorOperationCompleted(object arg) {
+            if ((this.CallSensorCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.leerSensorCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.CallSensorCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -355,7 +355,7 @@ namespace clienteNet.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void leerSensorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void CallSensorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591

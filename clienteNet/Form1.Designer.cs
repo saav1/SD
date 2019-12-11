@@ -76,6 +76,7 @@
             this.descAddSonda.Name = "descAddSonda";
             this.descAddSonda.Size = new System.Drawing.Size(220, 84);
             this.descAddSonda.TabIndex = 6;
+            this.descAddSonda.Text = "\r\n";
             // 
             // descConsultar
             // 
