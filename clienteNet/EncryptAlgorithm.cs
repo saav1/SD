@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 
 namespace clienteNet
 {
+    
+
     class EncryptAlgorithm
     {
+
+
         public static String Encrypt(string source)
         {
             DESCryptoServiceProvider des = new DESCryptoServiceProvider();
