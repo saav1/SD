@@ -28,7 +28,7 @@ namespace clienteNet
             sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
             sensor.readSonda();
 
-            
+
 
             bool exist = false;
             for (int i = 0; i < listaSensores.Count; i++)
@@ -99,23 +99,27 @@ namespace clienteNet
             {
                 if (nombreSensor == listaSensores[i].getNombre())
                 {
-                    switch (valor)
-                    {
-                        case "Volumen":
-                            descConsultar.Text = listaSensores[i].getVolumen(Login.user).ToString();
-                            break;
-                        case "Fecha":
-                            descConsultar.Text = listaSensores[i].getFecha(Login.user);
-                            break;
-                        case "Led":
-                            descConsultar.Text = listaSensores[i].getLed(Login.user).ToString();
-                            break;
-                    }
+                    descConsultar.Text = listaSensores[i].consultar(Encryptar(valor), Login.user);
                 }
             }
 
         }
 
+        private String Encryptar(string valor) {
+
+            char[] ctr = valor.ToCharArray();
+
+            StringBuilder s = new StringBuilder("");
+
+            for (int i = 0; i < ctr.Length; i++) {
+                s.Append(Char.ToString((char)(ctr[i] + (char)23)));
+            }
+
+
+            Console.WriteLine("Petición encriptada : " + s);
+
+            return s.ToString();
+        }
 
         private void Form1_Load(object sender, EventArgs e)
         {

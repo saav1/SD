@@ -5,19 +5,6 @@
 	</wsdl:documentation>
   <wsdl:types>
     <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://main">
-      <xs:element name="saveLog">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
-            <xs:element minOccurs="0" name="metodo" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="saveSensor">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
       <xs:element name="getFecha">
         <xs:complexType>
           <xs:sequence>
@@ -32,6 +19,26 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="setLed">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="led" type="xs:int" />
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="setNombre">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="readSonda">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
       <xs:element name="getNombre">
         <xs:complexType>
           <xs:sequence />
@@ -41,26 +48,6 @@
         <xs:complexType>
           <xs:sequence>
             <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="setLed">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="led" type="xs:int" />
-            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="readSonda">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="setNombre">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="nombre" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -78,6 +65,21 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="consultar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="str" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="consultarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="getVolumen">
         <xs:complexType>
           <xs:sequence>
@@ -92,6 +94,33 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
+      <xs:element name="saveSensor">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Desencriptar">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="str" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DesencriptarResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="saveLog">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="usuario" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="metodo" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
     </xs:schema>
   </wsdl:types>
   <wsdl:message name="getVolumenRequest">
@@ -99,6 +128,12 @@
   </wsdl:message>
   <wsdl:message name="getVolumenResponse">
     <wsdl:part name="parameters" element="ns:getVolumenResponse" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarRequest">
+    <wsdl:part name="parameters" element="ns:Desencriptar" />
+  </wsdl:message>
+  <wsdl:message name="DesencriptarResponse">
+    <wsdl:part name="parameters" element="ns:DesencriptarResponse" />
   </wsdl:message>
   <wsdl:message name="getNombreRequest">
     <wsdl:part name="parameters" element="ns:getNombre" />
@@ -111,6 +146,12 @@
   </wsdl:message>
   <wsdl:message name="saveLogRequest">
     <wsdl:part name="parameters" element="ns:saveLog" />
+  </wsdl:message>
+  <wsdl:message name="consultarRequest">
+    <wsdl:part name="parameters" element="ns:consultar" />
+  </wsdl:message>
+  <wsdl:message name="consultarResponse">
+    <wsdl:part name="parameters" element="ns:consultarResponse" />
   </wsdl:message>
   <wsdl:message name="setLedRequest">
     <wsdl:part name="parameters" element="ns:setLed" />
@@ -138,6 +179,10 @@
       <wsdl:input wsaw:Action="urn:getVolumen" message="ns:getVolumenRequest" />
       <wsdl:output wsaw:Action="urn:getVolumenResponse" message="ns:getVolumenResponse" />
     </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <wsdl:input wsaw:Action="urn:Desencriptar" message="ns:DesencriptarRequest" />
+      <wsdl:output wsaw:Action="urn:DesencriptarResponse" message="ns:DesencriptarResponse" />
+    </wsdl:operation>
     <wsdl:operation name="getNombre">
       <wsdl:input wsaw:Action="urn:getNombre" message="ns:getNombreRequest" />
       <wsdl:output wsaw:Action="urn:getNombreResponse" message="ns:getNombreResponse" />
@@ -147,6 +192,10 @@
     </wsdl:operation>
     <wsdl:operation name="saveLog">
       <wsdl:input wsaw:Action="urn:saveLog" message="ns:saveLogRequest" />
+    </wsdl:operation>
+    <wsdl:operation name="consultar">
+      <wsdl:input wsaw:Action="urn:consultar" message="ns:consultarRequest" />
+      <wsdl:output wsaw:Action="urn:consultarResponse" message="ns:consultarResponse" />
     </wsdl:operation>
     <wsdl:operation name="setLed">
       <wsdl:input wsaw:Action="urn:setLed" message="ns:setLedRequest" />
@@ -177,6 +226,15 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <soap:operation soapAction="urn:Desencriptar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getNombre">
       <soap:operation soapAction="urn:getNombre" style="document" />
       <wsdl:input>
@@ -197,6 +255,15 @@
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultar">
+      <soap:operation soapAction="urn:consultar" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="setLed">
       <soap:operation soapAction="urn:setLed" style="document" />
@@ -246,6 +313,15 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <soap12:operation soapAction="urn:Desencriptar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getNombre">
       <soap12:operation soapAction="urn:getNombre" style="document" />
       <wsdl:input>
@@ -266,6 +342,15 @@
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultar">
+      <soap12:operation soapAction="urn:consultar" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="setLed">
       <soap12:operation soapAction="urn:setLed" style="document" />
@@ -315,6 +400,15 @@
         <mime:content part="parameters" type="application/xml" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Desencriptar">
+      <http:operation location="Desencriptar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getNombre">
       <http:operation location="getNombre" />
       <wsdl:input>
@@ -335,6 +429,15 @@
       <wsdl:input>
         <mime:content part="parameters" type="application/xml" />
       </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="consultar">
+      <http:operation location="consultar" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="setLed">
       <http:operation location="setLed" />

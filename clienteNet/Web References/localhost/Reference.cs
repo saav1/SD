@@ -31,11 +31,15 @@ namespace clienteNet.localhost {
         
         private System.Threading.SendOrPostCallback getVolumenOperationCompleted;
         
+        private System.Threading.SendOrPostCallback DesencriptarOperationCompleted;
+        
         private System.Threading.SendOrPostCallback getNombreOperationCompleted;
         
         private System.Threading.SendOrPostCallback saveSensorOperationCompleted;
         
         private System.Threading.SendOrPostCallback saveLogOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback consultarOperationCompleted;
         
         private System.Threading.SendOrPostCallback setLedOperationCompleted;
         
@@ -89,6 +93,9 @@ namespace clienteNet.localhost {
         public event getVolumenCompletedEventHandler getVolumenCompleted;
         
         /// <remarks/>
+        public event DesencriptarCompletedEventHandler DesencriptarCompleted;
+        
+        /// <remarks/>
         public event getNombreCompletedEventHandler getNombreCompleted;
         
         /// <remarks/>
@@ -96,6 +103,9 @@ namespace clienteNet.localhost {
         
         /// <remarks/>
         public event saveLogCompletedEventHandler saveLogCompleted;
+        
+        /// <remarks/>
+        public event consultarCompletedEventHandler consultarCompleted;
         
         /// <remarks/>
         public event setLedCompletedEventHandler setLedCompleted;
@@ -139,6 +149,36 @@ namespace clienteNet.localhost {
             if ((this.getVolumenCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.getVolumenCompleted(this, new getVolumenCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:Desencriptar", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", IsNullable=true)]
+        public string Desencriptar([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string str) {
+            object[] results = this.Invoke("Desencriptar", new object[] {
+                        str});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void DesencriptarAsync(string str) {
+            this.DesencriptarAsync(str, null);
+        }
+        
+        /// <remarks/>
+        public void DesencriptarAsync(string str, object userState) {
+            if ((this.DesencriptarOperationCompleted == null)) {
+                this.DesencriptarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnDesencriptarOperationCompleted);
+            }
+            this.InvokeAsync("Desencriptar", new object[] {
+                        str}, this.DesencriptarOperationCompleted, userState);
+        }
+        
+        private void OnDesencriptarOperationCompleted(object arg) {
+            if ((this.DesencriptarCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.DesencriptarCompleted(this, new DesencriptarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -223,6 +263,38 @@ namespace clienteNet.localhost {
             if ((this.saveLogCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.saveLogCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:consultar", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        [return: System.Xml.Serialization.XmlElementAttribute("return", IsNullable=true)]
+        public string consultar([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string str, [System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string usuario) {
+            object[] results = this.Invoke("consultar", new object[] {
+                        str,
+                        usuario});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void consultarAsync(string str, string usuario) {
+            this.consultarAsync(str, usuario, null);
+        }
+        
+        /// <remarks/>
+        public void consultarAsync(string str, string usuario, object userState) {
+            if ((this.consultarOperationCompleted == null)) {
+                this.consultarOperationCompleted = new System.Threading.SendOrPostCallback(this.OnconsultarOperationCompleted);
+            }
+            this.InvokeAsync("consultar", new object[] {
+                        str,
+                        usuario}, this.consultarOperationCompleted, userState);
+        }
+        
+        private void OnconsultarOperationCompleted(object arg) {
+            if ((this.consultarCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.consultarCompleted(this, new consultarCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -417,6 +489,32 @@ namespace clienteNet.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void DesencriptarCompletedEventHandler(object sender, DesencriptarCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class DesencriptarCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal DesencriptarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void getNombreCompletedEventHandler(object sender, getNombreCompletedEventArgs e);
     
     /// <remarks/>
@@ -448,6 +546,32 @@ namespace clienteNet.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void saveLogCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void consultarCompletedEventHandler(object sender, consultarCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class consultarCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal consultarCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
+            }
+        }
+    }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
