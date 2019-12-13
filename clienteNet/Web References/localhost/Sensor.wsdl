@@ -5,6 +5,44 @@
 	</wsdl:documentation>
   <wsdl:types>
     <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://main">
+      <xs:element name="getLed">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getLedResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="return" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="saveSensor">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="file" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="setLed">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="led" type="xs:int" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFecha">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="getFechaResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
       <xs:element name="getNombre">
         <xs:complexType>
           <xs:sequence />
@@ -24,15 +62,10 @@
           </xs:sequence>
         </xs:complexType>
       </xs:element>
-      <xs:element name="getFecha">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getFechaResponse">
+      <xs:element name="readSonda">
         <xs:complexType>
           <xs:sequence>
-            <xs:element minOccurs="0" name="return" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="file" nillable="true" type="xs:string" />
           </xs:sequence>
         </xs:complexType>
       </xs:element>
@@ -42,39 +75,6 @@
         </xs:complexType>
       </xs:element>
       <xs:element name="getVolumenResponse">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="return" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="setLed">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element name="led" type="xs:int" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="saveSensor">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="file" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="readSonda">
-        <xs:complexType>
-          <xs:sequence>
-            <xs:element minOccurs="0" name="file" nillable="true" type="xs:string" />
-          </xs:sequence>
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getLed">
-        <xs:complexType>
-          <xs:sequence />
-        </xs:complexType>
-      </xs:element>
-      <xs:element name="getLedResponse">
         <xs:complexType>
           <xs:sequence>
             <xs:element name="return" type="xs:int" />
@@ -98,23 +98,23 @@
   <wsdl:message name="saveSensorRequest">
     <wsdl:part name="parameters" element="ns:saveSensor" />
   </wsdl:message>
-  <wsdl:message name="setNombreRequest">
-    <wsdl:part name="parameters" element="ns:setNombre" />
-  </wsdl:message>
   <wsdl:message name="setLedRequest">
     <wsdl:part name="parameters" element="ns:setLed" />
   </wsdl:message>
-  <wsdl:message name="getFechaRequest">
-    <wsdl:part name="parameters" element="ns:getFecha" />
-  </wsdl:message>
-  <wsdl:message name="getFechaResponse">
-    <wsdl:part name="parameters" element="ns:getFechaResponse" />
+  <wsdl:message name="setNombreRequest">
+    <wsdl:part name="parameters" element="ns:setNombre" />
   </wsdl:message>
   <wsdl:message name="getLedRequest">
     <wsdl:part name="parameters" element="ns:getLed" />
   </wsdl:message>
   <wsdl:message name="getLedResponse">
     <wsdl:part name="parameters" element="ns:getLedResponse" />
+  </wsdl:message>
+  <wsdl:message name="getFechaRequest">
+    <wsdl:part name="parameters" element="ns:getFecha" />
+  </wsdl:message>
+  <wsdl:message name="getFechaResponse">
+    <wsdl:part name="parameters" element="ns:getFechaResponse" />
   </wsdl:message>
   <wsdl:message name="readSondaRequest">
     <wsdl:part name="parameters" element="ns:readSonda" />
@@ -131,19 +131,19 @@
     <wsdl:operation name="saveSensor">
       <wsdl:input wsaw:Action="urn:saveSensor" message="ns:saveSensorRequest" />
     </wsdl:operation>
-    <wsdl:operation name="setNombre">
-      <wsdl:input wsaw:Action="urn:setNombre" message="ns:setNombreRequest" />
-    </wsdl:operation>
     <wsdl:operation name="setLed">
       <wsdl:input wsaw:Action="urn:setLed" message="ns:setLedRequest" />
     </wsdl:operation>
-    <wsdl:operation name="getFecha">
-      <wsdl:input wsaw:Action="urn:getFecha" message="ns:getFechaRequest" />
-      <wsdl:output wsaw:Action="urn:getFechaResponse" message="ns:getFechaResponse" />
+    <wsdl:operation name="setNombre">
+      <wsdl:input wsaw:Action="urn:setNombre" message="ns:setNombreRequest" />
     </wsdl:operation>
     <wsdl:operation name="getLed">
       <wsdl:input wsaw:Action="urn:getLed" message="ns:getLedRequest" />
       <wsdl:output wsaw:Action="urn:getLedResponse" message="ns:getLedResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="getFecha">
+      <wsdl:input wsaw:Action="urn:getFecha" message="ns:getFechaRequest" />
+      <wsdl:output wsaw:Action="urn:getFechaResponse" message="ns:getFechaResponse" />
     </wsdl:operation>
     <wsdl:operation name="readSonda">
       <wsdl:input wsaw:Action="urn:readSonda" message="ns:readSondaRequest" />
@@ -175,20 +175,20 @@
         <soap:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="setNombre">
-      <soap:operation soapAction="urn:setNombre" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="setLed">
       <soap:operation soapAction="urn:setLed" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="getFecha">
-      <soap:operation soapAction="urn:getFecha" style="document" />
+    <wsdl:operation name="setNombre">
+      <soap:operation soapAction="urn:setNombre" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getLed">
+      <soap:operation soapAction="urn:getLed" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -196,8 +196,8 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getLed">
-      <soap:operation soapAction="urn:getLed" style="document" />
+    <wsdl:operation name="getFecha">
+      <soap:operation soapAction="urn:getFecha" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -238,20 +238,20 @@
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="setNombre">
-      <soap12:operation soapAction="urn:setNombre" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="setLed">
       <soap12:operation soapAction="urn:setLed" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="getFecha">
-      <soap12:operation soapAction="urn:getFecha" style="document" />
+    <wsdl:operation name="setNombre">
+      <soap12:operation soapAction="urn:setNombre" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getLed">
+      <soap12:operation soapAction="urn:getLed" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -259,8 +259,8 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getLed">
-      <soap12:operation soapAction="urn:getLed" style="document" />
+    <wsdl:operation name="getFecha">
+      <soap12:operation soapAction="urn:getFecha" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
@@ -301,20 +301,20 @@
         <mime:content part="parameters" type="application/xml" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="setNombre">
-      <http:operation location="setNombre" />
-      <wsdl:input>
-        <mime:content part="parameters" type="application/xml" />
-      </wsdl:input>
-    </wsdl:operation>
     <wsdl:operation name="setLed">
       <http:operation location="setLed" />
       <wsdl:input>
         <mime:content part="parameters" type="application/xml" />
       </wsdl:input>
     </wsdl:operation>
-    <wsdl:operation name="getFecha">
-      <http:operation location="getFecha" />
+    <wsdl:operation name="setNombre">
+      <http:operation location="setNombre" />
+      <wsdl:input>
+        <mime:content part="parameters" type="application/xml" />
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="getLed">
+      <http:operation location="getLed" />
       <wsdl:input>
         <mime:content part="parameters" type="application/xml" />
       </wsdl:input>
@@ -322,8 +322,8 @@
         <mime:content part="parameters" type="application/xml" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getLed">
-      <http:operation location="getLed" />
+    <wsdl:operation name="getFecha">
+      <http:operation location="getFecha" />
       <wsdl:input>
         <mime:content part="parameters" type="application/xml" />
       </wsdl:input>

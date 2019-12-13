@@ -25,6 +25,8 @@ namespace clienteNet
             
             sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
             sensor.readSonda(@"Sensor.txt");
+
+
             bool exist = false;
             for (int i = 0; i < listaSensores.Count; i++)
             {

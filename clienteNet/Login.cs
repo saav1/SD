@@ -27,7 +27,7 @@ namespace clienteNet
         private void Button1_Click(object sender, EventArgs e)
         {
             string password = tbPassword.Text;
-            string user = tbUser.Text;
+
 
             string scr = EncryptAlgorithm.Encrypt(password);
 
@@ -50,7 +50,6 @@ namespace clienteNet
                 {
                     file.WriteLine("Usuario " + user + " conectado el " + DateTime.Now);
                 }
-
             }
             else
             {
@@ -58,10 +57,6 @@ namespace clienteNet
                 Console.WriteLine("Pas: " + pass);
                 Console.WriteLine("SCR: " + scr);
             }
-
-
-
-
         }
 
         public bool validar(string user, string password) {
