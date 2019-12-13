@@ -1,4 +1,4 @@
-Nombre=sensor
+Nombre=Sensor1
 Volument=20
 UltimaFecha=11/12/20
 Led=0
