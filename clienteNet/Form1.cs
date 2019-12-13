@@ -17,6 +17,7 @@ namespace clienteNet
         }
 
         List<localhost.Sensor> listaSensores = new List<localhost.Sensor>();
+        static int cont = 0;
 
         private void Button1_Click(object sender, EventArgs e)
         {
@@ -37,8 +38,7 @@ namespace clienteNet
             }
 
             if (exist == false) {
-                sensor.readSonda("Sensor.txt");
-                sensor.setNombre("Sensor " + ip_port);
+                sensor.setNombre("Sensor " + cont++);
                 listaSensores.Add(sensor);
             }
             escribirSondas();
@@ -93,7 +93,6 @@ namespace clienteNet
             {
                 if (nombreSensor == listaSensores[i].getNombre())
                 {
-
                     switch (valor)
                     {
                         case "Volumen":
@@ -116,35 +115,26 @@ namespace clienteNet
         {
             
         }
-
         private void Button2_Click(object sender, EventArgs e)
         {
 
         }
-
         private void TextBox3_TextChanged(object sender, EventArgs e)
         {
 
         }
-
         private void ComboBox2_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-
-
-
-
         private void Label1_Click(object sender, EventArgs e)
         {
 
         }
-
         private void DescModificar_TextChanged(object sender, EventArgs e)
         {
 

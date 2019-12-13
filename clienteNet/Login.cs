@@ -13,8 +13,8 @@ namespace clienteNet
     public partial class Login : Form
     {
 
-        string user = "a";
-        string pass = "a";
+        string user = " ";
+        string pass = " ";
 
 
         public Login()
@@ -27,17 +27,10 @@ namespace clienteNet
         private void Button1_Click(object sender, EventArgs e)
         {
             string password = tbPassword.Text;
-
-
             string scr = EncryptAlgorithm.Encrypt(password);
-
             Console.WriteLine("Cadena encriptada >> " + scr + " <<");
-
             string dscr = EncryptAlgorithm.Decrypt(scr);
-
             Console.WriteLine("Cadena desencriptada >> " + dscr + " <<");
-
-
 
             if (user == tbUser.Text && scr == pass)
             {
