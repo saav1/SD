@@ -1,1 +1,23 @@
-Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T14:51:43.242
+Sensor localhost:8080 dando servicios 2019-12-13T15:49:46.476
+Sensor Sensor localhost:8080 dando servicio GET FECHA a saav1 el 2019-12-13T15:49:46.491
+Sensor localhost:8080 dando servicios 2019-12-13T15:57:04.148
+Sensor localhost:8080 dando servicios 2019-12-13T15:57:04.208
+Sensor localhost:8080 dando servicios 2019-12-13T15:57:04.247
+Sensor localhost:8080 dando servicios 2019-12-13T15:57:04.277
+Sensor localhost:8080 dando servicios 2019-12-13T15:57:04.349
+Sensor localhost:8080 dando servicios 2019-12-13T15:57:04.365
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:04.291
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:04.310
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:04.337
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:08.398
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:08.413
+Sensor Sensor localhost:8080 dando servicio GET FECHA a saav1 el 2019-12-13T16:03:08.456
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:46.736
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:46.749
+Sensor Sensor localhost:8080 dando servicio GET FECHA a saav1 el 2019-12-13T16:03:46.772
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:48.806
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:48.819
+Sensor Sensor localhost:8080 dando servicio GET LED a saav1 el 2019-12-13T16:03:48.827
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:50.464
+Sensor localhost:8080 dando servicios 2019-12-13T16:03:50.477
+Sensor Sensor localhost:8080 dando servicio GET VOLUMEN a saav1 el 2019-12-13T16:03:50.486

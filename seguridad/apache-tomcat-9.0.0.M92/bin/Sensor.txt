@@ -1,3 +1,0 @@
-Volument=60
-UltimaFecha=10/10/19
-Led=1
