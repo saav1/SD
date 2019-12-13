@@ -109,6 +109,7 @@
             this.descModificar.Name = "descModificar";
             this.descModificar.Size = new System.Drawing.Size(220, 84);
             this.descModificar.TabIndex = 10;
+            this.descModificar.TextChanged += new System.EventHandler(this.DescModificar_TextChanged);
             // 
             // bConsultar
             // 

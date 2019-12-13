@@ -26,16 +26,40 @@ namespace clienteNet
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            if (user == tbUser.Text && pass == tbPassword.Text)
+            string password = tbPassword.Text;
+            string user = tbUser.Text;
+
+            string scr = EncryptAlgorithm.Encrypt(password);
+
+            Console.WriteLine("Cadena encriptada >> " + scr + " <<");
+
+            string dscr = EncryptAlgorithm.Decrypt(scr);
+
+            Console.WriteLine("Cadena desencriptada >> " + dscr + " <<");
+
+
+
+            if (user == tbUser.Text && scr == pass)
             {
                 this.Hide();
                 Form1 f1 = new Form1();
                 f1.Show();
+
+                using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(@"C:\Users\EPS\Desktop\SD\clienteNet\log.txt", true))
+                {
+                    file.WriteLine("Usuario " + user + " conectado el " + DateTime.Now);
+                }
+
             }
-            else {
+            else
+            {
                 Console.WriteLine(user + "/" + tbUser.Text);
-                Console.WriteLine(pass + "/" + tbPassword.Text);
+                Console.WriteLine("Pas: " + pass);
+                Console.WriteLine("SCR: " + scr);
             }
+
+
 
 
         }

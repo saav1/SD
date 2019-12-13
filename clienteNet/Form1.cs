@@ -22,8 +22,9 @@ namespace clienteNet
         {
             String ip_port = tbAddSonda.Text;
             localhost.Sensor sensor = new localhost.Sensor();
+            
             sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
-
+            sensor.readSonda(@"Sensor.txt");
             bool exist = false;
             for (int i = 0; i < listaSensores.Count; i++)
             {
@@ -73,9 +74,10 @@ namespace clienteNet
                 if (nombreSensor == listaSensores[i].getNombre())
                 {
                     listaSensores[i].setLed(int.Parse(newValue));
+                    listaSensores[i].saveSensor(@"Sensor.txt");
+                    descModificar.Text = listaSensores[i].getNombre() + " modificando.";
                 }
             }
-
 
         }
 
@@ -141,5 +143,9 @@ namespace clienteNet
 
         }
 
+        private void DescModificar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

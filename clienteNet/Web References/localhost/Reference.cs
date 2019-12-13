@@ -33,17 +33,17 @@ namespace clienteNet.localhost {
         
         private System.Threading.SendOrPostCallback getNombreOperationCompleted;
         
-        private System.Threading.SendOrPostCallback setLedOperationCompleted;
+        private System.Threading.SendOrPostCallback saveSensorOperationCompleted;
         
         private System.Threading.SendOrPostCallback setNombreOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback setLedOperationCompleted;
         
         private System.Threading.SendOrPostCallback getFechaOperationCompleted;
         
         private System.Threading.SendOrPostCallback getLedOperationCompleted;
         
         private System.Threading.SendOrPostCallback readSondaOperationCompleted;
-        
-        private System.Threading.SendOrPostCallback CallSensorOperationCompleted;
         
         private bool useDefaultCredentialsSetExplicitly;
         
@@ -90,10 +90,13 @@ namespace clienteNet.localhost {
         public event getNombreCompletedEventHandler getNombreCompleted;
         
         /// <remarks/>
-        public event setLedCompletedEventHandler setLedCompleted;
+        public event saveSensorCompletedEventHandler saveSensorCompleted;
         
         /// <remarks/>
         public event setNombreCompletedEventHandler setNombreCompleted;
+        
+        /// <remarks/>
+        public event setLedCompletedEventHandler setLedCompleted;
         
         /// <remarks/>
         public event getFechaCompletedEventHandler getFechaCompleted;
@@ -103,9 +106,6 @@ namespace clienteNet.localhost {
         
         /// <remarks/>
         public event readSondaCompletedEventHandler readSondaCompleted;
-        
-        /// <remarks/>
-        public event CallSensorCompletedEventHandler CallSensorCompleted;
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:getVolumen", RequestNamespace="http://main", ResponseNamespace="http://main", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
@@ -164,30 +164,30 @@ namespace clienteNet.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:setLed", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void setLed(int led) {
-            this.Invoke("setLed", new object[] {
-                        led});
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:saveSensor", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void saveSensor([System.Xml.Serialization.XmlElementAttribute(IsNullable=true)] string file) {
+            this.Invoke("saveSensor", new object[] {
+                        file});
         }
         
         /// <remarks/>
-        public void setLedAsync(int led) {
-            this.setLedAsync(led, null);
+        public void saveSensorAsync(string file) {
+            this.saveSensorAsync(file, null);
         }
         
         /// <remarks/>
-        public void setLedAsync(int led, object userState) {
-            if ((this.setLedOperationCompleted == null)) {
-                this.setLedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetLedOperationCompleted);
+        public void saveSensorAsync(string file, object userState) {
+            if ((this.saveSensorOperationCompleted == null)) {
+                this.saveSensorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsaveSensorOperationCompleted);
             }
-            this.InvokeAsync("setLed", new object[] {
-                        led}, this.setLedOperationCompleted, userState);
+            this.InvokeAsync("saveSensor", new object[] {
+                        file}, this.saveSensorOperationCompleted, userState);
         }
         
-        private void OnsetLedOperationCompleted(object arg) {
-            if ((this.setLedCompleted != null)) {
+        private void OnsaveSensorOperationCompleted(object arg) {
+            if ((this.saveSensorCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.setLedCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+                this.saveSensorCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -216,6 +216,34 @@ namespace clienteNet.localhost {
             if ((this.setNombreCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.setNombreCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:setLed", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public void setLed(int led) {
+            this.Invoke("setLed", new object[] {
+                        led});
+        }
+        
+        /// <remarks/>
+        public void setLedAsync(int led) {
+            this.setLedAsync(led, null);
+        }
+        
+        /// <remarks/>
+        public void setLedAsync(int led, object userState) {
+            if ((this.setLedOperationCompleted == null)) {
+                this.setLedOperationCompleted = new System.Threading.SendOrPostCallback(this.OnsetLedOperationCompleted);
+            }
+            this.InvokeAsync("setLed", new object[] {
+                        led}, this.setLedOperationCompleted, userState);
+        }
+        
+        private void OnsetLedOperationCompleted(object arg) {
+            if ((this.setLedCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.setLedCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -304,32 +332,6 @@ namespace clienteNet.localhost {
         }
         
         /// <remarks/>
-        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("urn:Sensor", RequestElementName="Sensor", RequestNamespace="http://main", OneWay=true, Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public void CallSensor() {
-            this.Invoke("CallSensor", new object[0]);
-        }
-        
-        /// <remarks/>
-        public void CallSensorAsync() {
-            this.CallSensorAsync(null);
-        }
-        
-        /// <remarks/>
-        public void CallSensorAsync(object userState) {
-            if ((this.CallSensorOperationCompleted == null)) {
-                this.CallSensorOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCallSensorOperationCompleted);
-            }
-            this.InvokeAsync("CallSensor", new object[0], this.CallSensorOperationCompleted, userState);
-        }
-        
-        private void OnCallSensorOperationCompleted(object arg) {
-            if ((this.CallSensorCompleted != null)) {
-                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
-                this.CallSensorCompleted(this, new System.ComponentModel.AsyncCompletedEventArgs(invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
-            }
-        }
-        
-        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -402,11 +404,15 @@ namespace clienteNet.localhost {
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void setLedCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    public delegate void saveSensorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void setNombreCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
+    public delegate void setLedCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
@@ -463,10 +469,6 @@ namespace clienteNet.localhost {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
     public delegate void readSondaCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
-    
-    /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.3752.0")]
-    public delegate void CallSensorCompletedEventHandler(object sender, System.ComponentModel.AsyncCompletedEventArgs e);
 }
 
 #pragma warning restore 1591
