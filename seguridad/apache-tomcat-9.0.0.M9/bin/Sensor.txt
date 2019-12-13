@@ -1,4 +1,4 @@
-Nombre=Sensor1
-Volument=20
+Nombre=Sensor localhost:8080
+Volumen=10
 UltimaFecha=11/12/20
-Led=0
+Led=12

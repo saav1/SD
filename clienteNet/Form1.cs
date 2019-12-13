@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+
 namespace clienteNet
 {
     public partial class Form1 : Form
@@ -23,10 +24,11 @@ namespace clienteNet
         {
             String ip_port = tbAddSonda.Text;
             localhost.Sensor sensor = new localhost.Sensor();
-            
-            sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
-            sensor.readSonda(@"Sensor.txt");
 
+            sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
+            sensor.readSonda();
+
+            
 
             bool exist = false;
             for (int i = 0; i < listaSensores.Count; i++)
@@ -37,15 +39,18 @@ namespace clienteNet
                 }
             }
 
-            if (exist == false) {
-                sensor.setNombre("Sensor " + cont++);
+            if (exist == false)
+            {
+                sensor.setNombre("Sensor " + ip_port);
+                sensor.readSonda();
                 listaSensores.Add(sensor);
             }
             escribirSondas();
 
         }
 
-        private void escribirSondas() {
+        private void escribirSondas()
+        {
 
             cbAtributos.Items.Clear();
             descAddSonda.Clear();
@@ -75,9 +80,10 @@ namespace clienteNet
             {
                 if (nombreSensor == listaSensores[i].getNombre())
                 {
-                    listaSensores[i].setLed(int.Parse(newValue));
-                    listaSensores[i].saveSensor(@"Sensor.txt");
+                    listaSensores[i].setLed(int.Parse(newValue), Login.user);
+                    listaSensores[i].saveSensor();
                     descModificar.Text = listaSensores[i].getNombre() + " modificando.";
+                    listaSensores[i].readSonda();
                 }
             }
 
@@ -96,13 +102,13 @@ namespace clienteNet
                     switch (valor)
                     {
                         case "Volumen":
-                            descConsultar.Text = listaSensores[i].getVolumen().ToString();
+                            descConsultar.Text = listaSensores[i].getVolumen(Login.user).ToString();
                             break;
                         case "Fecha":
-                            descConsultar.Text = listaSensores[i].getFecha();
+                            descConsultar.Text = listaSensores[i].getFecha(Login.user);
                             break;
                         case "Led":
-                            descConsultar.Text = listaSensores[i].getLed().ToString();
+                            descConsultar.Text = listaSensores[i].getLed(Login.user).ToString();
                             break;
                     }
                 }
@@ -113,7 +119,7 @@ namespace clienteNet
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            
+
         }
         private void Button2_Click(object sender, EventArgs e)
         {

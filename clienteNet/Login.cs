@@ -13,7 +13,8 @@ namespace clienteNet
     public partial class Login : Form
     {
 
-        string user = " ";
+        public static string user = "";
+
         string pass = " ";
 
 
@@ -52,7 +53,8 @@ namespace clienteNet
             }
         }
 
-        public bool validar(string user, string password) {
+        public bool validar(string user, string password)
+        {
             return true;
         }
 
