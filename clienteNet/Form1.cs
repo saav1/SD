@@ -28,8 +28,6 @@ namespace clienteNet
             sensor.Url = "http://" + ip_port + "/Sensor/services/Sensor.SensorHttpSoap11Endpoint/";
             sensor.readSonda();
 
-
-
             bool exist = false;
             for (int i = 0; i < listaSensores.Count; i++)
             {
@@ -46,9 +44,8 @@ namespace clienteNet
                 listaSensores.Add(sensor);
             }
             escribirSondas();
-
         }
-
+            
         private void escribirSondas()
         {
 
@@ -114,10 +111,7 @@ namespace clienteNet
             for (int i = 0; i < ctr.Length; i++) {
                 s.Append(Char.ToString((char)(ctr[i] + (char)23)));
             }
-
-
             Console.WriteLine("Petición encriptada : " + s);
-
             return s.ToString();
         }
 
